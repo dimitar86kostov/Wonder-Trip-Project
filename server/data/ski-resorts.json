@@ -1,0 +1,102 @@
+{
+    "ski-resorts": {
+        "list": [
+            {
+                "_id": "fd987ca9-cb15-4883-b48a-02d38a72843a",
+                "resort": "Zermatt",
+                "country": "Switzerland",
+                "imageUrl": "https://thumbs.dreamstime.com/z/zermatt-swiss-alps-emblem-label-matterhorn-vector-illustration-207118360.jpg?w=768"
+            },
+            {
+                "_id": "087d2265-d476-4c7e-a4b7-803bcffa32c4",
+                "resort": "Livigno",
+                "country": "Italy",
+                "imageUrl": "https://www.lifecircus.it/img/case/livigno/rebranding/livigno-05.jpg"
+            },
+            {
+                "_id": "ce8dbe12-2d54-4c96-8c64-7a7a06f7b265",
+                "resort": "Cervinia",
+                "country": "Italy",
+                "imageUrl": "https://boardridingstorageus.blob.core.windows.net/images/resize/cervinia-ski-resort-cervinia-valtournenche-cervino-ski-paradise-28829.jpg"
+            },
+            {
+                "_id": "a7f56f41-28cd-406e-bff0-4423ff6de6ea",
+                "resort": "Mayrhofen",
+                "country": "Austria",
+                "imageUrl": "https://i.etsystatic.com/29044662/r/il/1b0bc0/5621616536/il_794xN.5621616536_aqf7.jpg"
+            },
+            {
+                "_id": "6163e2a7-4f60-4e21-ad69-a182d822a714",
+                "resort": "Val Thorens",
+                "country": "France",
+                "imageUrl": "https://www.mbh.fr/wp-content/uploads/2019/10/logo-Val-Thorens.png"
+            }
+        ],
+        "details": {
+            "fd987ca9-cb15-4883-b48a-02d38a72843a": {
+                "_id": "fd987ca9-cb15-4883-b48a-02d38a72843a",
+                "altitude": "1608",
+                "kmOfSlopes": "322",
+                "numberOfLifts": "53",
+                "numberOfHotels": "103",
+                "bestHotelPrice": "889",
+                "highestPeak": "Matterhorn 4478",
+                "description": "Zermatt, town, Valais canton, southern Switzerland. It lies at the head of the Mattervisp Valley and at the foot of the Matterhorn (14,692 feet [4,478 m]), 23 miles (37 km) southeast of Sion. Its name is derived from its position Zur Matte ('in the Alpine meadow') at an elevation of 5,302 feet (1,616 m).",
+                "skiMap": "http://www.ski-zermatt.com/mattnet/pics/zermatt_skimap.jpg",
+                "gallery": [
+                    {
+                        "imageLink": "https://www.travelandleisure.com/thmb/wAqGdol8_AsJJ40bKfjU_O3EHGk=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/TAL-header-zermatt-switzerland-ZERMATT0123-08b7127082434b9f83db57251c051c1b.jpg"
+                    },
+                    {
+                        "imageLink": "https://www.travelandleisure.com/thmb/9E4X3yYM27bYCHvuEaWF1k2tvDw=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/TAL-matterhorn-lake-stellisee-ZERMATT0123-48b97d7a588247848810a1a4a040d3e8.jpg"
+                    },
+                    {
+                        "imageLink": "https://www.matterhornparadise.ch/ZBAG/05-skifahren/freeride-heliski/1433/image-thumb__1433__lightbox/Freeride%20%2817%29.png"
+                    },
+                    {
+                        "imageLink": "https://www.matterhornparadise.ch/ZBAG/05-skifahren/ski/01-nord/2205/image-thumb__2205__lightbox/ZBAG%20Ski%20Nord%20Lukas%20Solo-33.jpg"
+                    }
+                ]
+            },
+            "087d2265-d476-4c7e-a4b7-803bcffa32c4": {
+                "_id": "087d2265-d476-4c7e-a4b7-803bcffa32c4",
+                "altitude": "1816",
+                "kmOfSlopes": "115",
+                "numberOfLifts": "32",
+                "numberOfHotels": "67",
+                "bestHotelPrice": "281",
+                "highestPeak": "Cima Bianca 3020",
+                "description": "Livigno, town in the Italian Alps, is known for its high altitude skiing and snowboarding. Situated in the province of Sondrio, Lombardy, the resort offers a variety of slopes for all skill levels and a vibrant après-ski scene."
+            },
+            "ce8dbe12-2d54-4c96-8c64-7a7a06f7b265": {
+                "_id": "ce8dbe12-2d54-4c96-8c64-7a7a06f7b265",
+                "altitude": "2006",
+                "kmOfSlopes": "150",
+                "numberOfLifts": "24",
+                "numberOfHotels": "40",
+                "bestHotelPrice": "382",
+                "highestPeak": "Matterhorn 4478",
+                "description": "Cervinia, located in the Aosta Valley, Italy, is renowned for its extensive ski area and breathtaking views of the Matterhorn. The resort is a popular destination for both winter sports enthusiasts and summer tourists."
+            },
+            "a7f56f41-28cd-406e-bff0-4423ff6de6ea": {
+                "_id": "a7f56f41-28cd-406e-bff0-4423ff6de6ea",
+                "altitude": "630",
+                "kmOfSlopes": "142",
+                "numberOfLifts": "45",
+                "numberOfHotels": "40",
+                "bestHotelPrice": "422",
+                "highestPeak": "Ahornspitze 2976",
+                "description": "Mayrhofen, situated in the Zillertal Valley of Austria, is a versatile ski resort known for its diverse slopes and lively atmosphere. The town provides a gateway to a vast skiing area, including the renowned Hintertux Glacier."
+            },
+            "6163e2a7-4f60-4e21-ad69-a182d822a714": {
+                "_id": "6163e2a7-4f60-4e21-ad69-a182d822a714",
+                "altitude": "2300",
+                "kmOfSlopes": "150",
+                "numberOfLifts": "30",
+                "hotels": "34",
+                "highestPeak": "Pointe du Bouchet 3230",
+                "description": "Val Thorens, the highest ski resort in Europe, is located in the Tarentaise Valley, France. It forms part of the Trois Vallées ski area and is famed for its snow reliability, extensive ski runs, and vibrant village atmosphere."
+            }
+        }
+    }
+}
