@@ -23,18 +23,23 @@ export default function Register() {
     const navigate = useNavigate();
     const register = useRegister();
 
-    const registerSubmitHandler = async ({ email, password }) => {
+    const registerHandler = async ({ email, password, rePass }) => {
+        if (password !== rePass) {
+            return setError("Password missmatch")
+        }
+
         try {
             const result = await register(email, password);
             console.log(result);
             navigate('/');
 
         } catch (err) {
+            console.error(err.message);
             setError(err.message)
         }
     }
 
-    const { values, changeHandler, submitHandler } = useForm(initValues, registerSubmitHandler)
+    const { values, changeHandler, submitHandler } = useForm(initValues, registerHandler)
 
     return (
         <section className="h-screen items-center p-8">
@@ -103,7 +108,15 @@ export default function Register() {
                                 />
                             </div>
 
-                            <Button className="mt-6" fullWidth>
+                            <Typography className="mb-16 text-gray-600 font-normal text-[18px]">
+                                {error
+                                    && (<h1>
+                                        <span style={{ color: 'red' }}>{error}</span>
+                                    </h1>)
+                                }
+                            </Typography>
+
+                            <Button type="submit" className="mt-6" fullWidth>
                                 sign up
                             </Button>
                             <Typography color="gray" className="mt-4 text-center font-normal">

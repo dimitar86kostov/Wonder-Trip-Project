@@ -5,7 +5,6 @@ import {
     Typography,
     Button,
     IconButton,
-    Card,
 } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 import AuthContext from "../../contexts/AuthContext";

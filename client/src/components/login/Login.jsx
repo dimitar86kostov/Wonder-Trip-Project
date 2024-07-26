@@ -36,11 +36,6 @@ export function Login() {
     return (
         <section className="grid text-center h-screen items-center p-8">
             <div className="p-20 flex items-center gap-x-4 text-xs">
-                {error &&
-                    <h1 variant="h3" color="red-gray" className="mb-2">
-                        {error}
-                    </h1>
-                }
                 <div className="mx-auto max-w-7xl px-6 lg:px-8">
                     <div className="mx-auto max-w-2xl lg:mx-0">
                         <Typography variant="h3" color="blue-gray" className="mb-2">
@@ -49,6 +44,7 @@ export function Login() {
                         <Typography className="mb-16 text-gray-600 font-normal text-[18px]">
                             Enter your email and password to sign in
                         </Typography>
+
 
                         <form onSubmit={submitHandler} action="POST" className="mx-auto max-w-[24rem] text-left">
                             <div className="mb-6">
@@ -105,13 +101,15 @@ export function Login() {
                                     }
                                 />
                             </div>
-                            <div>
+                            <Typography className="mb-16 text-gray-600 font-normal text-[18px]">
                                 {error
                                     && (<h1>
-                                        <span>{error}</span>
+                                        <span style={{ color: 'red' }}>{error}</span>
                                     </h1>)
                                 }
-                            </div>
+                            </Typography>
+
+
                             <Button type="submit" color="gray" size="lg" className="mt-6" fullWidth>
                                 sign in
                             </Button>
