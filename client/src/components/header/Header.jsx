@@ -9,7 +9,7 @@ import {
 } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import UserContext from "../../contexts/UserContext";
+import AuthContext from "../../contexts/AuthContext";
 
 export function Header() {
     const [openNav, setOpenNav] = React.useState(false);
@@ -21,7 +21,7 @@ export function Header() {
         );
     }, []);
 
-    const { user } = useContext(UserContext)
+    const { user } = useContext(AuthContext)
 
     const navList = (
         <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">

@@ -41,12 +41,12 @@ SoftUni React Course Project
   - [x] Login
   - [x] Register
   - [ ] Logout
-- [] Auth API hook
-  - [] Login
-  - [] Register
+- [x] Auth API hook
+  - [x] Login
+  - [x] Register
   - [ ] Logout
-- [] Auth state & contet
-- [] Token management
+- [x] Auth state & context
+- [x] Token management
 - [] Login
 - [] Register
   - [] Add form validation

@@ -1,20 +1,21 @@
 import useForm from "../../hooks/useForm";
 import { useNavigate } from "react-router-dom";
 
+const initFormValues = {
+    resort: '',
+    country: '',
+    imageUrl: '',
+    altitude: '',
+    kmOfSlopes: '',
+    numberOfLifts: '',
+    numberOfHotels: '',
+    bestHotelPrice: '',
+    highestPeak: '',
+    skiMap: '',
+    description: ''
+}
+
 export default function CreateTrip() {
-    const initFormValues = {
-        resort: '',
-        country: '',
-        imageUrl: '',
-        altitude: '',
-        kmOfSlopes: '',
-        numberOfLifts: '',
-        numberOfHotels: '',
-        bestHotelPrice: '',
-        highestPeak: '',
-        skiMap: '',
-        description: ''
-    }
     const navigate = useNavigate();
 
 

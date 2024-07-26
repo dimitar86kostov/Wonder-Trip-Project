@@ -3,20 +3,21 @@ import { useNavigate } from "react-router-dom";
 
 import { Typography, Input, Button } from "@material-tailwind/react";
 import { EyeSlashIcon, EyeIcon } from "@heroicons/react/24/solid";
-import UserContext from "../../contexts/UserContext";
 import useForm from "../../hooks/useForm";
+import { useLogin } from "../../hooks/useAuth";
+
+const initValues = {
+    username: '',
+    password: ''
+}
 
 export function Login() {
     const [passwordShown, setPasswordShown] = useState(false);
     const togglePasswordVisiblity = () => setPasswordShown((cur) => !cur);
 
     const navigate = useNavigate();
-    const { login } = useContext(UserContext);
+    const login = useLogin();
 
-    const initValues = {
-        username: '',
-        password: ''
-    }
 
     const loginSubmitHandler = ({ username, password }) => {
         login(username, password);
@@ -125,7 +126,7 @@ export function Login() {
                                 className="!mt-4 text-center font-normal"
                             >
                                 Not registered?{" "}
-                                <a href="#" className="font-medium text-gray-900">
+                                <a href="/register" className="font-medium text-gray-900">
                                     Create account
                                 </a>
                             </Typography>
