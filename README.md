@@ -37,9 +37,9 @@ SoftUni React Course Project
 - [x] TripAPI Hooks
 - [ ] Comment Hooks
 ## 7. Authentication
-- [] Auth API
-  - [] Login
-  - [] Register
+- [x] Auth API
+  - [x] Login
+  - [x] Register
   - [ ] Logout
 - [] Auth API hook
   - [] Login
