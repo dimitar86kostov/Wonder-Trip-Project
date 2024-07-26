@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { Routes, Route } from "react-router-dom"
-import UserContext from "./contexts/UserContext"
+import AuthContext from "./contexts/AuthContext"
 
 
 import { TripsList } from "./components/tripsList/TripsList"
@@ -13,14 +13,23 @@ import Register from "./components/register/Register"
 import CreateTrip from "./components/createTrip/CreateTrip"
 
 function App() {
-  const [currentUser, setCurrentUser] = useState({});
+  const [authState, setAuthState] = useState({});
 
-  const login = (username, password) => {
-    setCurrentUser({ username })
+  const changeAuthState = (state) => {
+    localStorage.setItem('accessToken', state.accessToken);
+    setAuthState(state)
+  };
+
+  const contextData = {
+    userId: authState._id,
+    email: authState.email,
+    accessToken: authState.accessToken,
+    isAuthenticated: !!authState.email,
+    changeAuthState
   }
 
   return (
-    <UserContext.Provider value={{ user: currentUser, login }}>
+    <AuthContext.Provider value={contextData}>
       <Header />
 
       <Routes>
@@ -32,7 +41,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
       </Routes>
-    </UserContext.Provider>
+    </AuthContext.Provider>
 
   )
 }
