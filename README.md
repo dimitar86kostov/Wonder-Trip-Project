@@ -1,4 +1,4 @@
-# games-play-may-2024
+# wonder-trip-2024
 SoftUni React Course Project
 
 ## 1. Initialize Project
@@ -17,18 +17,50 @@ SoftUni React Course Project
 ## 3. Create Service Layer
 - [x] Service layer architecture disccusion
 - [x] Abstract requester
-- [x] Add games api
+- [x] Add trips api
 - [x] Preseed practice server
 ## 4. Page Implementations
-- [x] Game list
+- [x] Trips list
 - [x] Details
   - [x] Details link
   - [x] Details route
   - [x] Api function - getOne
-- [x] Home - Latest Games
-## 5. Comments (Advanced)
-- [x] Create service for nested resource `comments`
-- [x] Post comment to server
-- [x] Read comments from server
-- [x] Add comments in the component
-- [x] Clear form
+- [] Home - Latest Trips
+## 5. Comments
+- [] Create service for nested resource `comments`
+- [] Post comment to server
+- [] Read comments from server
+- [] Add comments in the component
+- [] Clear form
+## 6. API Hooks
+- [x] Form Hook
+- [x] TripAPI Hooks
+- [ ] Comment Hooks
+## 7. Authentication
+- [] Auth API
+  - [] Login
+  - [] Register
+  - [ ] Logout
+- [] Auth API hook
+  - [] Login
+  - [] Register
+  - [ ] Logout
+- [] Auth state & contet
+- [] Token management
+- [] Login
+- [] Register
+  - [] Add form validation
+- [ ] Logout
+- [] Authorized Requests
+## 8. UI Implementation 
+- [] Dynamic navigation
+- [x] Create trip
+  - [] API function
+  - [] Hook
+- [ ] Latest trips
+
+## Notes
+
+URL `http://localhost:3030/data/games?sortBy=_createdOn%20desc&pageSize=3`
+USE URLSearchParams
+seedData - line 1341 in server.js

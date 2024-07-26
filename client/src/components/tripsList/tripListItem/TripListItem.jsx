@@ -11,15 +11,18 @@ import {
 
 // import { ButtonGroup, Button } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
+import useFetch from "../../../hooks/useFetch";
 
 export default function TripListItem({
     imageUrl,
     resort,
     country,
-    details,
     _id
 }) {
+    const { data: details, isFetching } = useFetch(`http://localhost:3030/jsonstore/ski-resorts/details/${_id}`, {});
+
     return (
+
         <Card className="w-full max-w-[26rem] shadow-lg">
             <CardHeader floated={false} color="blue-gray">
                 <img
@@ -64,14 +67,14 @@ export default function TripListItem({
                                 clipRule="evenodd"
                             />
                         </svg>
-                        5.0
+                        4.0
                     </Typography>
                 </div>
                 <Typography color="gray">
                     {country}
                 </Typography>
                 <div className="group mt-8 inline-flex flex-wrap items-center gap-3">
-                    <Tooltip content="$129 per night">
+                    <Tooltip content={`${details.bestHotelPrice} € per night`}>
                         <span className="cursor-pointer rounded-full border border-gray-900/5 bg-gray-900/5 p-3 text-gray-900 transition-colors hover:border-gray-900/10 hover:bg-gray-900/10 hover:!opacity-100 group-hover:opacity-70">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -105,7 +108,7 @@ export default function TripListItem({
                             </svg>
                         </span>
                     </Tooltip>
-                    <Tooltip content="2 bedrooms">
+                    <Tooltip content={`${details.numberOfHotels} hotels`}>
                         <span className="cursor-pointer rounded-full border border-gray-900/5 bg-gray-900/5 p-3 text-gray-900 transition-colors hover:border-gray-900/10 hover:bg-gray-900/10 hover:!opacity-100 group-hover:opacity-70">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -118,7 +121,7 @@ export default function TripListItem({
                             </svg>
                         </span>
                     </Tooltip>
-                    <Tooltip content={`65" HDTV`}>
+                    {/* <Tooltip content={`65" HDTV`}>
                         <span className="cursor-pointer rounded-full border border-gray-900/5 bg-gray-900/5 p-3 text-gray-900 transition-colors hover:border-gray-900/10 hover:bg-gray-900/10 hover:!opacity-100 group-hover:opacity-70">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -134,7 +137,7 @@ export default function TripListItem({
                                 />
                             </svg>
                         </span>
-                    </Tooltip>
+                    </Tooltip> */}
                     <Tooltip content="Fire alert">
                         <span className="cursor-pointer rounded-full border border-gray-900/5 bg-gray-900/5 p-3 text-gray-900 transition-colors hover:border-gray-900/10 hover:bg-gray-900/10 hover:!opacity-100 group-hover:opacity-70">
                             <svg
@@ -151,42 +154,30 @@ export default function TripListItem({
                             </svg>
                         </span>
                     </Tooltip>
-                    <Tooltip content="And +20 more">
+                    {/* <Tooltip content="And +20 more">
                         <span className="cursor-pointer rounded-full border border-gray-900/5 bg-gray-900/5 p-3 text-gray-900 transition-colors hover:border-gray-900/10 hover:bg-gray-900/10 hover:!opacity-100 group-hover:opacity-70">
                             +20
                         </span>
-                    </Tooltip>
+                    </Tooltip> */}
                 </div>
             </CardBody>
 
             <CardFooter className="pt-1">
-                <Link to={`/catalog/${_id}/details`} id={_id}>SEE DETAILS</Link>
+                <Link to={`/catalog/${_id}/details`}>
+                    <button
+                        className="align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-20 rounded-lg bg-gradient-to-tr from-gray-900 to-gray-800 text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85]"
+                        type="button"
+                    >
+                        Details
+                    </button>
+                </Link>
             </CardFooter>
-
+            {/* 
             <CardFooter className="pt-3">
 
-                <Button size="lg" fullWidth={true}
 
-                >
-                    Reserve
-                </Button>
-
-                <Button
-                    size="lg"
-                    variant="outlined"
-                    fullWidth={true}
-                    _id={_id}
-                    as={Link} to={`/catalog/${_id}/details`}
-                    key={_id}
-                    onClick={print}
-                >
-                    Details
-                </Button>
-            </CardFooter>
-        </Card>
+            </CardFooter> */}
+        </Card >
     );
-    function print() {
-        console.log(`details of ${resort} with id: ${_id}`);
-    }
+
 }
-{/* <Button as={Link} to={`/catalog/${_id}/details`} variant="gradient" size="md" onClick={console.log(`Details of ${_id}`)}>Details</Button> */ }
