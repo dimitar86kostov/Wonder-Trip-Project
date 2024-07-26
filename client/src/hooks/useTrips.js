@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import tripsAPI from "../api/trips-api";
 
-export function useGetAllGames() {
+export function useGetAllTrips() {
     const [trips, setTrips] = useState({});
 
     useEffect(() => {
@@ -18,7 +18,7 @@ export function useGetAllGames() {
     return [trips, setTrips];
 }
 
-export function useGetOneGames(tripId) {
+export function useGetOneTrips(tripId) {
     const [trip, setTrip] = useState({});
 
     useEffect(() => {
@@ -35,7 +35,7 @@ export function useGetOneGames(tripId) {
     ];
 }
 
-export function useCreateGame() {
+export function useCreateTrip() {
 
     const tripCreateHandler = (tripData) => tripsAPI.create(tripData);
 

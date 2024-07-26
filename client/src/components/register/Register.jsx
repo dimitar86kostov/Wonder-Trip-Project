@@ -1,93 +1,119 @@
-
 import {
     Card,
     Input,
-    Checkbox,
     Button,
     Typography,
 } from "@material-tailwind/react";
 
+import { useRegister } from "../../hooks/useAuth";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import useForm from "../../hooks/useForm";
+
+const initValues = {
+    username: '',
+    email: '',
+    password: '',
+    rePass: '',
+}
+
 export default function Register() {
+    const [error, setError] = useState();
+
+    const navigate = useNavigate();
+    const register = useRegister();
+
+    const registerSubmitHandler = async ({ email, password }) => {
+        try {
+            const result = await register(email, password);
+            console.log(result);
+            navigate('/');
+
+        } catch (err) {
+            setError(err.message)
+        }
+    }
+
+    const { values, changeHandler, submitHandler } = useForm(initValues, registerSubmitHandler)
+
     return (
         <section className="h-screen items-center p-8">
             <div className="p-20 flex items-center gap-x-4 text-xs">
-                <div className="mx-auto max-w-7xl px-6 lg:px-8">
-                    <div className="mx-auto max-w-2xl lg:mx-0">
+                <div className="mx-auto max-w-7xl px-6 lg:px-8 justify-center">
 
-                        <Card color="transparent" shadow={false}>
-                            <Typography variant="h4" color="blue-gray">
-                                Sign Up
-                            </Typography>
-                            <Typography color="gray" className="mt-1 font-normal">
-                                Nice to meet you! Enter your details to register.
-                            </Typography>
-                            <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
-                                <div className="mb-1 flex flex-col gap-6">
-                                    <Typography variant="h6" color="blue-gray" className="-mb-3">
-                                        Your Name
-                                    </Typography>
-                                    <Input
-                                        size="lg"
-                                        placeholder="name@mail.com"
-                                        className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-                                        labelProps={{
-                                            className: "before:content-none after:content-none",
-                                        }}
-                                    />
-                                    <Typography variant="h6" color="blue-gray" className="-mb-3">
-                                        Your Email
-                                    </Typography>
-                                    <Input
-                                        size="lg"
-                                        placeholder="name@mail.com"
-                                        className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-                                        labelProps={{
-                                            className: "before:content-none after:content-none",
-                                        }}
-                                    />
-                                    <Typography variant="h6" color="blue-gray" className="-mb-3">
-                                        Password
-                                    </Typography>
-                                    <Input
-                                        type="password"
-                                        size="lg"
-                                        placeholder="********"
-                                        className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-                                        labelProps={{
-                                            className: "before:content-none after:content-none",
-                                        }}
-                                    />
-                                </div>
-                                <Checkbox
-                                    label={
-                                        <Typography
-                                            variant="small"
-                                            color="gray"
-                                            className="flex items-center font-normal"
-                                        >
-                                            I agree the
-                                            <a
-                                                href="#"
-                                                className="font-medium transition-colors hover:text-gray-900"
-                                            >
-                                                &nbsp;Terms and Conditions
-                                            </a>
-                                        </Typography>
-                                    }
-                                    containerProps={{ className: "-ml-2.5" }}
-                                />
-                                <Button className="mt-6" fullWidth>
-                                    sign up
-                                </Button>
-                                <Typography color="gray" className="mt-4 text-center font-normal">
-                                    Already have an account?{" "}
-                                    <a href="#" className="font-medium text-gray-900">
-                                        Sign In
-                                    </a>
+                    <Card color="transparent" shadow={false}>
+                        <Typography variant="h4" color="blue-gray">
+                            Sign Up
+                        </Typography>
+                        <Typography color="gray" className="mt-1 font-normal">
+                            Nice to meet you! Enter your details to register.
+                        </Typography>
+                        <form onSubmit={submitHandler} className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
+                            <div className="mb-1 flex flex-col gap-6">
+                                <Typography variant="h6" color="blue-gray" className="-mb-3">
+                                    Your Name
                                 </Typography>
-                            </form>
-                        </Card>
-                    </div>
+                                <Input
+                                    name="username"
+                                    value={values.username}
+                                    onChange={changeHandler}
+                                    size="lg"
+                                    placeholder="name@mail.com"
+                                    className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+                                    labelProps={{ className: "before:content-none after:content-none", }}
+                                />
+                                <Typography variant="h6" color="blue-gray" className="-mb-3">
+                                    Your Email
+                                </Typography>
+                                <Input
+                                    name="email"
+                                    value={values.email}
+                                    onChange={changeHandler}
+                                    size="lg"
+                                    placeholder="name@mail.com"
+                                    className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+                                    labelProps={{ className: "before:content-none after:content-none", }}
+                                />
+                                <Typography variant="h6" color="blue-gray" className="-mb-3">
+                                    Password
+                                </Typography>
+                                <Input
+                                    name="password"
+                                    value={values.password}
+                                    onChange={changeHandler}
+                                    type="password"
+                                    size="lg"
+                                    placeholder="********"
+                                    className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+                                    labelProps={{ className: "before:content-none after:content-none", }}
+                                />
+                                <Typography variant="h6" color="blue-gray" className="-mb-3">
+                                    Confirm Password
+                                </Typography>
+                                <Input
+                                    name="rePass"
+                                    value={values.rePass}
+                                    onChange={changeHandler}
+                                    size="lg"
+                                    placeholder="********"
+                                    className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+                                    labelProps={{
+                                        className: "before:content-none after:content-none",
+                                    }}
+                                />
+                            </div>
+
+                            <Button className="mt-6" fullWidth>
+                                sign up
+                            </Button>
+                            <Typography color="gray" className="mt-4 text-center font-normal">
+                                Already have an account?{" "}
+                                <Link to="/login" className="font-medium text-gray-900">
+                                    Sign In
+                                </Link>
+                            </Typography>
+                        </form>
+                    </Card>
                 </div>
             </div>
         </section>

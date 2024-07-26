@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { Typography, Input, Button } from "@material-tailwind/react";
 import { EyeSlashIcon, EyeIcon } from "@heroicons/react/24/solid";
@@ -7,21 +7,27 @@ import useForm from "../../hooks/useForm";
 import { useLogin } from "../../hooks/useAuth";
 
 const initValues = {
-    username: '',
+    email: '',
     password: ''
 }
 
 export function Login() {
+    const [error, setError] = useState();
     const [passwordShown, setPasswordShown] = useState(false);
     const togglePasswordVisiblity = () => setPasswordShown((cur) => !cur);
 
     const navigate = useNavigate();
     const login = useLogin();
 
+    const loginSubmitHandler = async ({ email, password }) => {
+        try {
+            const result = await login(email, password);
+            console.log(result);
+            navigate('/');
 
-    const loginSubmitHandler = ({ username, password }) => {
-        login(username, password);
-        navigate('/');
+        } catch (err) {
+            setError(err.message)
+        }
     }
 
     const { values, changeHandler, submitHandler } = useForm(initValues, loginSubmitHandler)
@@ -30,6 +36,11 @@ export function Login() {
     return (
         <section className="grid text-center h-screen items-center p-8">
             <div className="p-20 flex items-center gap-x-4 text-xs">
+                {error &&
+                    <h1 variant="h3" color="red-gray" className="mb-2">
+                        {error}
+                    </h1>
+                }
                 <div className="mx-auto max-w-7xl px-6 lg:px-8">
                     <div className="mx-auto max-w-2xl lg:mx-0">
                         <Typography variant="h3" color="blue-gray" className="mb-2">
@@ -38,6 +49,7 @@ export function Login() {
                         <Typography className="mb-16 text-gray-600 font-normal text-[18px]">
                             Enter your email and password to sign in
                         </Typography>
+
                         <form onSubmit={submitHandler} action="POST" className="mx-auto max-w-[24rem] text-left">
                             <div className="mb-6">
                                 <label htmlFor="email">
@@ -52,8 +64,8 @@ export function Login() {
                                     color="gray"
                                     size="lg"
                                     type="text"
-                                    name="username"
-                                    value={values.username}
+                                    name="email"
+                                    value={values.email}
                                     onChange={changeHandler}
                                     placeholder="name@mail.com"
                                     className="w-full placeholder:opacity-100 focus:border-t-primary border-t-blue-gray-200"
@@ -93,42 +105,26 @@ export function Login() {
                                     }
                                 />
                             </div>
+                            <div>
+                                {error
+                                    && (<h1>
+                                        <span>{error}</span>
+                                    </h1>)
+                                }
+                            </div>
                             <Button type="submit" color="gray" size="lg" className="mt-6" fullWidth>
                                 sign in
                             </Button>
-                            <div className="!mt-4 flex justify-end">
-                                <Typography
-                                    as="a"
-                                    href="#"
-                                    color="blue-gray"
-                                    variant="small"
-                                    className="font-medium"
-                                >
-                                    Forgot password
-                                </Typography>
-                            </div>
-                            <Button
-                                variant="outlined"
-                                size="lg"
-                                className="mt-6 flex h-12 items-center justify-center gap-2"
-                                fullWidth
-                            >
-                                <img
-                                    src={`https://www.material-tailwind.com/logos/logo-google.png`}
-                                    alt="google"
-                                    className="h-6 w-6"
-                                />{" "}
-                                sign in with google
-                            </Button>
+
                             <Typography
                                 variant="small"
                                 color="gray"
                                 className="!mt-4 text-center font-normal"
                             >
                                 Not registered?{" "}
-                                <a href="/register" className="font-medium text-gray-900">
+                                <Link to="/register" className="font-medium text-gray-900">
                                     Create account
-                                </a>
+                                </Link>
                             </Typography>
                         </form>
                     </div>

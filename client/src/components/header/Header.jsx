@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
     Navbar,
     Collapse,
@@ -8,7 +8,6 @@ import {
     Card,
 } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
 import AuthContext from "../../contexts/AuthContext";
 
 export function Header() {
@@ -21,7 +20,7 @@ export function Header() {
         );
     }, []);
 
-    const { user } = useContext(AuthContext)
+    const { email: user } = useContext(AuthContext)
 
     const navList = (
         <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
@@ -62,8 +61,8 @@ export function Header() {
                 className="p-1 font-normal"
             >
                 <Link to="/contacts" className="flex items-center">
-                    {user.username
-                        ? user.username
+                    {user
+                        ? user
                         : 'Guest'}
                 </Link>
             </Typography>
