@@ -1,18 +1,16 @@
 import {
   Typography,
 } from "@material-tailwind/react";
-// import { useEffect, useState } from "react";
-// import tripsAPI from "../../api/trips-api";
 import TripListItem from "./tripListItem/TripListItem";
-import useFetch from "../../hooks/useFetch";
 import { Spinner } from "@material-tailwind/react";
+import { useGetAllTrips } from "../../hooks/useTrips";
 
 
 export function TripsList() {
 
-  const { data, isFetching } = useFetch("http://localhost:3030/data/resorts", {});
-  const trips = Object.values(data);
+  const [trips, setTrips, isFetching] = useGetAllTrips();
 
+  console.log(trips);
   return (
     <section className="py-10 px-8">
       <div className="mx-auto text-center mb-16">

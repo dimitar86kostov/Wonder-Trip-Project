@@ -7,9 +7,7 @@ const getAll = async () => {
 
     const result = Object.values(response);
 
-
-    return result
-
+    return result;
 };
 
 const getOne = (tripId) => request.get(`${BASE_URL}/${tripId}`);

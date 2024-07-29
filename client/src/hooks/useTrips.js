@@ -4,6 +4,7 @@ import tripsAPI from "../api/trips-api";
 
 export function useGetAllTrips() {
     const [trips, setTrips] = useState({});
+    const [isFetching, setIsFetching] = useState(true);
 
     useEffect(() => {
         (
@@ -11,11 +12,12 @@ export function useGetAllTrips() {
                 const result = await tripsAPI.getAll();
 
                 setTrips(result);
+                setIsFetching(false)
             }
         )()
-    });
+    }, []);
 
-    return [trips, setTrips];
+    return [trips, setTrips, isFetching];
 }
 
 export function useGetOneTrips(tripId) {
@@ -36,14 +38,9 @@ export function useGetOneTrips(tripId) {
 }
 
 export function useCreateTrip() {
-
-    const createListHandler = (tripData) => tripsAPI.createAtList(tripData);
-    const createDetailsHandler = (tripData) => tripsAPI.createAtDetails(tripData);
     const create = (tripData) => tripsAPI.create(tripData);
 
     return {
-        createListHandler,
-        createDetailsHandler,
         create
     };
 }

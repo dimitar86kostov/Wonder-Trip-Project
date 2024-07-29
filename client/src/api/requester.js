@@ -5,6 +5,7 @@ async function requester(method, url, data) {
     const options = {};
 
     if (accessToken) {
+        console.log(accessToken);
         options.headers = {
             ...options.headers,
             'X-Authorization': accessToken

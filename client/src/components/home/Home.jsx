@@ -1,111 +1,37 @@
 'use client'
+import { Card, Spinner, Typography } from "@material-tailwind/react";
+import { useGetAllTrips } from "../../hooks/useTrips";
+import TripCard from "./tripCard/TripCard";
 
-import { useState } from 'react'
-import { Dialog, DialogPanel } from '@headlessui/react'
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import { Card, Typography } from "@material-tailwind/react";
-
-const posts = [
-    {
-        id: 1,
-        title: 'Boost your conversion rate',
-        href: '#',
-        description:
-            'Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.',
-        date: 'Mar 16, 2020',
-        datetime: '2020-03-16',
-        category: { title: 'Marketing', href: '#' },
-        author: {
-            name: 'Michael Foster',
-            role: 'Co-Founder / CTO',
-            href: '#',
-            imageUrl:
-                'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-        },
-    },
-    // More posts...
-]
 
 export default function Home() {
-    const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
+    const [trips, setTrips, isFetching] = useGetAllTrips();
+
+    console.log(trips);
+
     return (
-        <div className="bg-white py-24 sm:py-32">
-            <div className="mx-auto max-w-7xl px-6 lg:px-8">
-                <video className="h-full w-full rounded-lg" controls autoPlay muted>
-                    <source src="https://www.shutterstock.com/shutterstock/videos/1107656893/preview/stock-footage-scenic-aerial-view-of-mountain-ridge-gornergrat-in-pennine-alps-covered-with-snow-with-building-of.webm" type="video/mp4" />
-                    Your browser does not support the video tag.
-                </video>
-                <div className="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-                    {posts.map((post) => (
-                        <article key={post.id} className="flex max-w-xl flex-col items-start justify-between">
-                            <div className="flex items-center gap-x-4 text-xs">
-                                <time dateTime={post.datetime} className="text-gray-500">
-                                    {post.date}
-                                </time>
-                                <a
-                                    href={post.category.href}
-                                    className="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100"
-                                >
-                                    {post.category.title}
-                                </a>
-                            </div>
-                            <div className="group relative">
-                                <h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
-                                    <a href={post.href}>
-                                        <span className="absolute inset-0" />
-                                        {post.title}
-                                    </a>
-                                </h3>
-                                <p className="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">{post.description}</p>
-                            </div>
-                            <div className="relative mt-8 flex items-center gap-x-4">
-                                <img alt="" src={post.author.imageUrl} className="h-10 w-10 rounded-full bg-gray-50" />
-                                <div className="text-sm leading-6">
-                                    <p className="font-semibold text-gray-900">
-                                        <a href={post.author.href}>
-                                            <span className="absolute inset-0" />
-                                            {post.author.name}
-                                        </a>
-                                    </p>
-                                    <p className="text-gray-600">{post.author.role}</p>
-                                </div>
-                            </div>
-                        </article>
-                    ))}
+        <section className="py-10 px-8">
+            <div className="mx-auto text-center mb-16">
+
+                <Typography variant="h1" className="my-4 text-4xl">
+                    Find What You Need
+                </Typography>
+                <Typography className="!font-normal text-gray-500 mx-auto max-w-2xl">
+                    Travel becomes a strategy for accumulating photographs.
+                </Typography>
+            </div>
+            <div className="mx-auto container">
+                <div className="grid grid-cols-1 gap-8 lg:grid-cols-3 md:grid-cols-2">
+                    {isFetching
+                        ? <Spinner style={{ width: '1300px', margin: '100px auto' }} className="h-16 w-16 items-center text-gray-900/50" />
+                        : trips.map((trip) => (<TripCard
+                            key={trip._id}
+                            {...trip}
+                        />))
+                    }
                 </div>
             </div>
-
-
-
-            <div className="mx-auto max-w-screen-md py-12">
-                <Card className="mb-12 overflow-hidden">
-                    <img
-                        alt="nature"
-                        className="h-[32rem] w-full object-cover object-center"
-                        src="https://images.unsplash.com/photo-1485470733090-0aae1788d5af?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2717&q=80"
-                    />
-                </Card>
-                <Typography variant="h2" color="blue-gray" className="mb-2">
-                    What is Material Tailwind
-                </Typography>
-                <Typography color="gray" className="font-normal">
-                    Can you help me out? you will get a lot of free exposure doing this
-                    can my website be in english?. There is too much white space do less
-                    with more, so that will be a conversation piece can you rework to make
-                    the pizza look more delicious other agencies charge much lesser can
-                    you make the blue bluer?. I think we need to start from scratch can my
-                    website be in english?, yet make it sexy i&apos;ll pay you in a week
-                    we don&apos;t need to pay upfront i hope you understand can you make
-                    it stand out more?. Make the font bigger can you help me out? you will
-                    get a lot of free exposure doing this that&apos;s going to be a chunk
-                    of change other agencies charge much lesser. Are you busy this
-                    weekend? I have a new project with a tight deadline that&apos;s going
-                    to be a chunk of change. There are more projects lined up charge extra
-                    the next time.
-                </Typography>
-            </div>
-        </div>
-
-
+        </section>
     );
 }
