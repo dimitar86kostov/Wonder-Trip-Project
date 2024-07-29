@@ -30,7 +30,6 @@ export default function Register() {
 
         try {
             const result = await register(email, password);
-            console.log(result);
             navigate('/');
 
         } catch (err) {

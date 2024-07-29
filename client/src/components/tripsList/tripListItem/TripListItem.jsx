@@ -17,9 +17,16 @@ export default function TripListItem({
     imageUrl,
     resort,
     country,
-    _id
+    _id,
+    altitude,
+    kmOfSlopes,
+    numberOfLifts,
+    numberOfHotels,
+    bestHotelPrice,
+    highestPeak,
+    skiMap,
+    description,
 }) {
-    const { data: details, isFetching } = useFetch(`http://localhost:3030/jsonstore/ski-resorts/details/${_id}`, {});
 
     return (
 
@@ -74,7 +81,7 @@ export default function TripListItem({
                     {country}
                 </Typography>
                 <div className="group mt-8 inline-flex flex-wrap items-center gap-3">
-                    <Tooltip content={`${details.bestHotelPrice} € per night`}>
+                    <Tooltip content={`${bestHotelPrice} € per night`}>
                         <span className="cursor-pointer rounded-full border border-gray-900/5 bg-gray-900/5 p-3 text-gray-900 transition-colors hover:border-gray-900/10 hover:bg-gray-900/10 hover:!opacity-100 group-hover:opacity-70">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -108,7 +115,7 @@ export default function TripListItem({
                             </svg>
                         </span>
                     </Tooltip>
-                    <Tooltip content={`${details.numberOfHotels} hotels`}>
+                    <Tooltip content={`${numberOfHotels} hotels`}>
                         <span className="cursor-pointer rounded-full border border-gray-900/5 bg-gray-900/5 p-3 text-gray-900 transition-colors hover:border-gray-900/10 hover:bg-gray-900/10 hover:!opacity-100 group-hover:opacity-70">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"

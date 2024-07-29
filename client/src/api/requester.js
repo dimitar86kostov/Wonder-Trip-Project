@@ -1,7 +1,6 @@
 async function requester(method, url, data) {
 
     const accessToken = localStorage.getItem('accessToken');
-    console.log(accessToken);
 
     const options = {};
 

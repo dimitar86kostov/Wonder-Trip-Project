@@ -21,33 +21,14 @@ export default function CreateTrip() {
     const [error, setError] = useState();
 
     const navigate = useNavigate();
-    const { createListHandler, createDetailsHandler, create } = useCreateTrip();
+    const { create } = useCreateTrip();
 
 
     const createHandler = async (values) => {
         try {
-            // const listResult = createListHandler(
-            //     values.resort,
-            //     values.country,
-            //     values.imageUrl
-            // );
-            // const detailsResult = createDetailsHandler(
-            //     values.altitude,
-            //     values.kmOfSlopes,
-            //     values.numberOfLifts,
-            //     values.numberOfHotels,
-            //     values.bestHotelPrice,
-            //     values.highestPeak,
-            //     values.skiMap,
-            //     values.description,
-            // )
 
-            // await listResult;
-            // await detailsResult;
-
-            // navigate(`/catalog/${result._id}/details`)
-
-            await create(values)
+            const result = await create(values)
+            navigate(`/catalog/${result._id}/details`)
 
         } catch (err) {
             console.error(err.message);

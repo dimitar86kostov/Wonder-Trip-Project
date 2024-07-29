@@ -9,16 +9,8 @@ import { Spinner } from "@material-tailwind/react";
 
 
 export function TripsList() {
-  // const [trips, setTrips] = useState([]);
 
-  // useEffect(() => {
-  //   (async () => {
-  //     const result = await tripsAPI.getAll();
-  //     setTrips(result);
-  //   })();
-  // }, []);
-
-  const { data, isFetching } = useFetch("http://localhost:3030/jsonstore/ski-resorts/list", {});
+  const { data, isFetching } = useFetch("http://localhost:3030/data/resorts", {});
   const trips = Object.values(data);
 
   return (

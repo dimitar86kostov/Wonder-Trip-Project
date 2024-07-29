@@ -22,7 +22,6 @@ export function Login() {
     const loginSubmitHandler = async ({ email, password }) => {
         try {
             const result = await login(email, password);
-            console.log(result.accessToken);
             navigate('/');
 
         } catch (err) {

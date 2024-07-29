@@ -2,11 +2,14 @@ import { Link, useParams } from "react-router-dom";
 import { PaperClipIcon } from '@heroicons/react/20/solid'
 import { Button } from "@material-tailwind/react";
 import useFetch from "../../../../hooks/useFetch";
+import { useGetOneTrips } from "../../../../hooks/useTrips";
 
 export default function TripDetails() {
     const { tripId } = useParams();
+    console.log(tripId);
 
-    const { data: details } = useFetch(`http://localhost:3030/jsonstore/ski-resorts/details/${tripId}`, {});
+    const [trip, setTrip] = useGetOneTrips(tripId);
+    console.log(trip);
 
     return (
         <div className="bg-white">
@@ -14,14 +17,14 @@ export default function TripDetails() {
                 <div>
                     <img
                         alt="Walnut card tray with white powder coated steel divider and 3 punchout holes."
-                        src={details.skiMap}
+                        src={trip.skiMap}
                         className="rounded-lg bg-gray-100"
                     />
 
                     <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"><br />
-                        {`\n ${details.numberOfLifts} Lifts _______ ${details.kmOfSlopes} km. of Slopes`}</h2>
+                        {`\n ${trip.numberOfLifts} Lifts _______ ${trip.kmOfSlopes} km. of Slopes`}</h2>
                     <p className="mt-4 text-gray-500">
-                        {details.description}
+                        {trip.description}
                     </p>
 
                     <dl className="mt-16 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-y-16 lg:gap-x-8">
@@ -31,20 +34,20 @@ export default function TripDetails() {
                                 <dd className="mt-2 text-sm text-gray-500">{feature[1][1]}</dd>
                             </div>
                         ))} */}
-                        <div key={details.altitude} className="border-t border-gray-200 pt-4">
-                            <dt className="font-medium text-gray-900">{`${details.altitude} m.`}</dt>
+                        <div key={trip.altitude} className="border-t border-gray-200 pt-4">
+                            <dt className="font-medium text-gray-900">{`${trip.altitude} m.`}</dt>
                             <dd className="mt-2 text-sm text-gray-500">Altitude</dd>
                         </div>
-                        <div key={details.bestHotelPrice} className="border-t border-gray-200 pt-4">
-                            <dt className="font-medium text-gray-900">{`${details.bestHotelPrice} € per night.`}</dt>
+                        <div key={trip.bestHotelPrice} className="border-t border-gray-200 pt-4">
+                            <dt className="font-medium text-gray-900">{`${trip.bestHotelPrice} € per night.`}</dt>
                             <dd className="mt-2 text-sm text-gray-500">Best Hotel Price</dd>
                         </div>
-                        <div key={details.kmOfSlopes} className="border-t border-gray-200 pt-4">
-                            <dt className="font-medium text-gray-900">{details.numberOfHotels}</dt>
+                        <div key={trip.kmOfSlopes} className="border-t border-gray-200 pt-4">
+                            <dt className="font-medium text-gray-900">{trip.numberOfHotels}</dt>
                             <dd className="mt-2 text-sm text-gray-500">Hotels in the resort</dd>
                         </div>
-                        <div key={details.highestPeak} className="border-t border-gray-200 pt-4">
-                            <dt className="font-medium text-gray-900">{`${details.highestPeak} m.`}</dt>
+                        <div key={trip.highestPeak} className="border-t border-gray-200 pt-4">
+                            <dt className="font-medium text-gray-900">{`${trip.highestPeak} m.`}</dt>
                             <dd className="mt-2 text-sm text-gray-500">Highest Peak</dd>
                         </div>
                     </dl>
