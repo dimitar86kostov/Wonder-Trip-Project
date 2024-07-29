@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import { Typography, Input, Button } from "@material-tailwind/react";
@@ -22,7 +22,7 @@ export function Login() {
     const loginSubmitHandler = async ({ email, password }) => {
         try {
             const result = await login(email, password);
-            console.log(result);
+            console.log(result.accessToken);
             navigate('/');
 
         } catch (err) {
@@ -101,14 +101,12 @@ export function Login() {
                                     }
                                 />
                             </div>
-                            <Typography className="mb-16 text-gray-600 font-normal text-[18px]">
-                                {error
-                                    && (<h1>
-                                        <span style={{ color: 'red' }}>{error}</span>
-                                    </h1>)
-                                }
-                            </Typography>
 
+                            {error
+                                && (<h1>
+                                    <span style={{ color: 'red' }}>{error}</span>
+                                </h1>)
+                            }
 
                             <Button type="submit" color="gray" size="lg" className="mt-6" fullWidth>
                                 sign in

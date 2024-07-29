@@ -37,7 +37,13 @@ export function useGetOneTrips(tripId) {
 
 export function useCreateTrip() {
 
-    const tripCreateHandler = (tripData) => tripsAPI.create(tripData);
+    const createListHandler = (tripData) => tripsAPI.createAtList(tripData);
+    const createDetailsHandler = (tripData) => tripsAPI.createAtDetails(tripData);
+    const create = (tripData) => tripsAPI.create(tripData);
 
-    return tripCreateHandler;
+    return {
+        createListHandler,
+        createDetailsHandler,
+        create
+    };
 }

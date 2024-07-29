@@ -1,6 +1,5 @@
-import { useState } from "react"
 import { Routes, Route } from "react-router-dom"
-import AuthContext from "./contexts/AuthContext"
+import { AuthContextProvider } from "./contexts/AuthContext"
 
 
 import { TripsList } from "./components/tripsList/TripsList"
@@ -11,38 +10,26 @@ import About from "./components/about/About"
 import Login from "./components/login/Login"
 import Register from "./components/register/Register"
 import CreateTrip from "./components/createTrip/CreateTrip"
+import Logout from "./components/logout/Logout"
 
 function App() {
-  const [authState, setAuthState] = useState({});
 
-  const changeAuthState = (state) => {
-    localStorage.setItem('accessToken', state.accessToken);
-    setAuthState(state)
-  };
-
-  const contextData = {
-    userId: authState._id,
-    username: authState.username,
-    email: authState.email,
-    accessToken: authState.accessToken,
-    isAuthenticated: !!authState.email,
-    changeAuthState
-  }
 
   return (
-    <AuthContext.Provider value={contextData}>
+    <AuthContextProvider >
       <Header />
 
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/logout" element={<Logout />} />
         <Route path="/catalog" element={<TripsList />} />
         <Route path="/catalog/:tripId/details" element={<TripDetails />} />
         <Route path="/create" element={<CreateTrip />} />
         <Route path="/about" element={<About />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
       </Routes>
-    </AuthContext.Provider>
+    </AuthContextProvider>
 
   )
 }

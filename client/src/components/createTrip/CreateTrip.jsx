@@ -1,5 +1,7 @@
 import useForm from "../../hooks/useForm";
 import { useNavigate } from "react-router-dom";
+import { useCreateTrip } from "../../hooks/useTrips";
+import { useState } from "react";
 
 const initFormValues = {
     resort: '',
@@ -16,55 +18,44 @@ const initFormValues = {
 }
 
 export default function CreateTrip() {
+    const [error, setError] = useState();
+
     const navigate = useNavigate();
+    const { createListHandler, createDetailsHandler, create } = useCreateTrip();
 
 
-    const formSubmitHandler = (values) => {
-        (
-            async () => {
-                const listResponse = fetch("http://localhost:3030/jsonstore/ski-resorts/list", {
-                    method: "POST",
-                    headers: {
-                        "Content-type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        resort: values.resort,
-                        country: values.country,
-                        imageUrl: values.imageUrl
-                    }),
-                });
+    const createHandler = async (values) => {
+        try {
+            // const listResult = createListHandler(
+            //     values.resort,
+            //     values.country,
+            //     values.imageUrl
+            // );
+            // const detailsResult = createDetailsHandler(
+            //     values.altitude,
+            //     values.kmOfSlopes,
+            //     values.numberOfLifts,
+            //     values.numberOfHotels,
+            //     values.bestHotelPrice,
+            //     values.highestPeak,
+            //     values.skiMap,
+            //     values.description,
+            // )
 
-                const detailsResponse = fetch("http://localhost:3030/jsonstore/ski-resorts/details", {
-                    method: "POST",
-                    headers: {
-                        "Content-type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        altitude: values.altitude,
-                        kmOfSlopes: values.kmOfSlopes,
-                        numberOfLifts: values.numberOfLifts,
-                        numberOfHotels: values.numberOfHotels,
-                        bestHotelPrice: values.bestHotelPrice,
-                        highestPeak: values.highestPeak,
-                        skiMap: values.skiMap,
-                        description: values.description,
-                        author: user.email
-                    }),
-                })
+            // await listResult;
+            // await detailsResult;
 
-                await listResponse.json();
-                const result = await detailsResponse.json();
+            // navigate(`/catalog/${result._id}/details`)
 
-                navigate(`/catalog/${result._id}/details`);
-            }
-        )();
+            await create(values)
 
-
-        console.log('Form Submitted');
-        console.log(values);
+        } catch (err) {
+            console.error(err.message);
+            setError(err.message)
+        }
 
     }
-    const { values, changeHandler, submitHandler } = useForm(initFormValues, formSubmitHandler)
+    const { values, changeHandler, submitHandler } = useForm(initFormValues, createHandler)
 
     return (
         <div className="p-10 flex items-center gap-x-4 text-xs">
@@ -262,10 +253,16 @@ export default function CreateTrip() {
                             <label
                                 className="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all before:content-none after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all after:content-none peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:!border-gray-900 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:!border-gray-900 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500"></label>
                         </div>
-
-
-
                     </div>
+
+
+                    {error
+                        && (<h1>
+                            <span style={{ color: 'red' }}>{error}</span>
+                        </h1>)
+                    }
+
+
                     <button
                         className="select-none rounded-lg bg-gray-900 py-3.5 px-7 text-center align-middle font-sans text-sm font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                         type="submit">

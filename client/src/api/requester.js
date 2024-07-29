@@ -1,6 +1,17 @@
 async function requester(method, url, data) {
 
+    const accessToken = localStorage.getItem('accessToken');
+    console.log(accessToken);
+
     const options = {};
+
+    if (accessToken) {
+        options.headers = {
+            ...options.headers,
+            'X-Authorization': accessToken
+        }
+    }
+
 
     if (method != 'GET') {
         options.method = method;
@@ -8,6 +19,7 @@ async function requester(method, url, data) {
 
     if (data) {
         options.headers = {
+            ...options.headers,
             'Content-type': 'application/json'
         }
 
@@ -15,14 +27,18 @@ async function requester(method, url, data) {
     }
 
     const response = await fetch(url, options);
-    const result = await response.json();
+    if (response.status === 204) {
+        return;
+    }
 
+    const result = await response.json();
     if (!response.ok) {
         console.error(result);
         throw result;
     }
 
     return result;
+
 }
 
 export const get = requester.bind(null, 'GET')
