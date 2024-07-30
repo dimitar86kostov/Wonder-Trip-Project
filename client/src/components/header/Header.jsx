@@ -1,11 +1,5 @@
 import React from "react";
-import {
-    Navbar,
-    Collapse,
-    Typography,
-    Button,
-    IconButton,
-} from "@material-tailwind/react";
+
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../../contexts/AuthContext";
 
@@ -19,7 +13,7 @@ export function Header() {
         );
     }, []);
 
-    const { email: user } = useAuthContext();
+    const { username: user, isAuthenticated } = useAuthContext();
 
     return (
         <nav
@@ -36,7 +30,7 @@ export function Header() {
                     </Link>
                     : "Guest"
                 }
-                
+
                 <div className="hidden lg:block">
                     <ul className="flex flex-col gap-2 my-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
                         <li className="block p-1 font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900">
@@ -44,31 +38,42 @@ export function Header() {
                                 Catalog
                             </Link>
                         </li>
-                        <li className="block p-1 font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900">
-                            <Link to="/create" className="flex items-center transition-colors hover:text-blue-500">
-                                Create
-                            </Link>
-                        </li>
-                        <li className="block p-1 font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900">
+
+                        {/* <li className="block p-1 font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900">
                             <Link to="/about" className="flex items-center transition-colors hover:text-blue-500">
                                 About
                             </Link>
-                        </li>
-                        <li className="block p-1 font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900">
-                            <Link to="/login" className="flex items-center transition-colors hover:text-blue-500">
-                                Login
-                            </Link>
-                        </li>
-                        <li className="block p-1 font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900">
-                            <Link to="/register" className="flex items-center transition-colors hover:text-blue-500">
-                                Register
-                            </Link>
-                        </li>
-                        <li className="block p-1 font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900">
-                            <Link to="/logout" className="flex items-center transition-colors hover:text-blue-500">
-                                Logout
-                            </Link>
-                        </li>
+                        </li> */}
+                        {isAuthenticated
+                            ?
+                            <ul className="flex flex-col gap-2 my-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
+                                <li className="block p-1 font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900">
+                                    <Link to="/create" className="flex items-center transition-colors hover:text-blue-500">
+                                        Create
+                                    </Link>
+                                </li>
+                                <li className="block p-1 font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900">
+                                    <Link to="/logout" className="flex items-center transition-colors hover:text-blue-500">
+                                        Logout
+                                    </Link>
+                                </li>
+                            </ul>
+                            :
+                            <ul className="flex flex-col gap-2 my-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
+                                <li className="block p-1 font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900">
+                                    <Link to="/login" className="flex items-center transition-colors hover:text-blue-500">
+                                        Login
+                                    </Link>
+                                </li>
+                                <li className="block p-1 font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900">
+                                    <Link to="/register" className="flex items-center transition-colors hover:text-blue-500">
+                                        Register
+                                    </Link>
+                                </li>
+                            </ul>
+                        }
+
+
                     </ul>
                 </div>
                 <button
