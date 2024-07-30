@@ -62,7 +62,7 @@ export default function Register() {
                                     value={values.username}
                                     onChange={changeHandler}
                                     size="lg"
-                                    placeholder="name@mail.com"
+                                    placeholder="Michael"
                                     className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
                                     labelProps={{ className: "before:content-none after:content-none", }}
                                 />

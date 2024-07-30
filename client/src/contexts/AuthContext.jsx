@@ -33,7 +33,7 @@ export function AuthContextProvider(props) {
         changeAuthState,
         logout
     }
-    console.log(contextData);
+
     return (
         <AuthContext.Provider value={contextData}>
             {props.children}

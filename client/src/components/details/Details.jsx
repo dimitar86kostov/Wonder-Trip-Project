@@ -1,8 +1,6 @@
-import { Link, useParams } from "react-router-dom";
-import { PaperClipIcon } from '@heroicons/react/20/solid'
-import { Button } from "@material-tailwind/react";
-import useFetch from "../../../../hooks/useFetch";
-import { useGetOneTrips } from "../../../../hooks/useTrips";
+import { useParams } from "react-router-dom";
+import { useGetOneTrips } from "../../hooks/useTrips";
+import Comments from "./comments/Comments";
 
 export default function TripDetails() {
     const { tripId } = useParams();
@@ -50,16 +48,8 @@ export default function TripDetails() {
                         </div>
                     </dl>
                 </div>
-                <div className="grid grid-cols-2 gap-2">
-                    {/* {gallery.map((image) => (
-                        <div key={image}>
-                            <img
-                                className="h-40 max-w-full rounded-lg object-cover object-center md:h-60"
-                                src={image}
-                                alt=""
-                            />
-                        </div>
-                    ))} */}
+                <div className="p-10 grid grid-rows-2 gap-2">
+                    {<Comments key={trip._id} />}
                 </div>
             </div>
         </div>

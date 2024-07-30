@@ -13,7 +13,7 @@ export function Header() {
         );
     }, []);
 
-    const { username: user, isAuthenticated } = useAuthContext();
+    const { email: user, isAuthenticated } = useAuthContext();
 
     return (
         <nav

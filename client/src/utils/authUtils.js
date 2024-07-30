@@ -8,6 +8,5 @@ export function getAccessToken() {
 
     const authData = JSON.parse(authJSON);
 
-    console.log(authData.accessToken);
     return authData?.accessToken;
 }

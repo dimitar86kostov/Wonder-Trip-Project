@@ -6,6 +6,6 @@ export default function Logout() {
 
     logout();
 
-    return <Navigate to="/catalog" />
+    return <Navigate to="/login" />
 
 }

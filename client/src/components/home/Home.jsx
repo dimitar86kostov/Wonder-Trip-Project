@@ -22,7 +22,7 @@ export default function Home() {
             <div className="mx-auto container">
                 <div className="grid grid-cols-1 gap-8 lg:grid-cols-3 md:grid-cols-2">
                     {isFetching
-                        ? <Spinner style={{ width: '1300px', margin: '100px auto' }} className="h-16 w-16 items-center text-gray-900/50" />
+                        ? <Spinner style={{ width: '1000px', margin: '100px auto' }} className="h-16 w-16 items-center text-gray-900/50" />
                         : trips.map((trip) => (<TripCard
                             key={trip._id}
                             {...trip}
