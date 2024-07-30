@@ -19,7 +19,7 @@ export function Header() {
         );
     }, []);
 
-    const { username: user } = useAuthContext();
+    const { email: user } = useAuthContext();
 
     return (
         <nav

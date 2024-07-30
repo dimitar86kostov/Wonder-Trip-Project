@@ -8,8 +8,6 @@ export default function Home() {
 
     const [trips, setTrips, isFetching] = useGetAllTrips();
 
-    console.log(trips);
-
     return (
         <section className="py-10 px-8">
             <div className="mx-auto text-center mb-16">

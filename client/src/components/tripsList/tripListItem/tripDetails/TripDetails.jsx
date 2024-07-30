@@ -6,10 +6,8 @@ import { useGetOneTrips } from "../../../../hooks/useTrips";
 
 export default function TripDetails() {
     const { tripId } = useParams();
-    console.log(tripId);
 
     const [trip, setTrip] = useGetOneTrips(tripId);
-    console.log(trip);
 
     return (
         <div className="bg-white">

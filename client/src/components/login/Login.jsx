@@ -21,7 +21,8 @@ export function Login() {
 
     const loginSubmitHandler = async ({ email, password }) => {
         try {
-            const result = await login(email, password);
+            await login(email, password);
+            
             navigate('/');
 
         } catch (err) {

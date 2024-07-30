@@ -1,16 +1,16 @@
+import { getAccessToken } from "../utils/authUtils";
+
 async function requester(method, url, data) {
-
-    const accessToken = localStorage.getItem('accessToken');
-
     const options = {};
+    
+    const accessToken = getAccessToken();
 
     if (accessToken) {
         options.headers = {
             ...options.headers,
-            'X-Authorization': accessToken
+            'X-Authorization': accessToken,
         }
     }
-
 
     if (method != 'GET') {
         options.method = method;
