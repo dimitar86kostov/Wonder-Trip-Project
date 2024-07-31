@@ -1,18 +1,35 @@
 
 import { useEffect, useState } from "react";
 import tripsAPI from "../api/trips-api";
+import { useAuthContext } from "../contexts/AuthContext";
+import { useNavigate } from 'react-router-dom'
 
 export function useGetAllTrips() {
     const [trips, setTrips] = useState({});
     const [isFetching, setIsFetching] = useState(true);
+    const { logout } = useAuthContext();
+    const navigate = useNavigate();
 
     useEffect(() => {
         (
             async () => {
-                const result = await tripsAPI.getAll();
+                try {
+                    const result = await tripsAPI.getAll();
 
-                setTrips(result);
-                setIsFetching(false)
+                    setTrips(result);
+                    setIsFetching(false)
+                } catch (err) {
+                    console.error(err.message);
+
+                    if (err.message === 'Invalid access token') {
+                        logout();
+
+                        console.log("Session is restored!");
+
+                        navigate('/');
+                        return;
+                    }
+                }
             }
         )()
     }, []);
