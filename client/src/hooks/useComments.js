@@ -13,7 +13,7 @@ export function useGetAllComments(tripId) {
     useEffect(() => {
         (async () => {
             const result = await commentsAPI.getAll(tripId);
-            console.log(result);
+
             setComments(result);
         })();
     }, [tripId]);

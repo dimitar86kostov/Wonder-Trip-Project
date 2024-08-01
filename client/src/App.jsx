@@ -12,6 +12,7 @@ import Register from "./components/register/Register"
 import CreateTrip from "./components/createTrip/CreateTrip"
 import Logout from "./components/logout/Logout"
 import Edit from "./components/edit/Edit"
+import Delete from "./components/delete/Delete"
 
 function App() {
 
@@ -26,9 +27,10 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/catalog" element={<TripsList />} />
+        <Route path="/create" element={<CreateTrip />} />
         <Route path="/catalog/:tripId/details" element={<Details />} />
         <Route path="/catalog/:tripId/edit" element={<Edit />} />
-        <Route path="/create" element={<CreateTrip />} />
+        <Route path="/catalog/:tripId/delete" element={<Delete />} />
         <Route path="/about" element={<About />} />
       </Routes>
     </AuthContextProvider>

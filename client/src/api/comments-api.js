@@ -6,7 +6,6 @@ const create = (tripId, text) => request.post(BASE_URL, { tripId, text });
 
 
 const getAll = (tripId) => {
-    // return request.get(BASE_URL)
 
     const params = new URLSearchParams({
         where: `tripId="${tripId}"`,
