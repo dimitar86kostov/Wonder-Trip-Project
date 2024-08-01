@@ -2,13 +2,14 @@ import { getAccessToken } from "../utils/authUtils";
 
 async function requester(method, url, data) {
     const options = {};
-    
+
+    // const accessToken = localStorage.getItem('accessToken');
     const accessToken = getAccessToken();
 
     if (accessToken) {
         options.headers = {
             ...options.headers,
-            'X-Authorization': accessToken,
+            'x-authorization': accessToken,
         }
     }
 
@@ -27,6 +28,13 @@ async function requester(method, url, data) {
 
     const response = await fetch(url, options);
     if (response.status === 204) {
+        return;
+    }
+    if (response.status === 403) {
+
+        localStorage.clear();
+        console.log("Session is restored!");
+
         return;
     }
 
