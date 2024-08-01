@@ -38,7 +38,19 @@ export function useGetAllTrips() {
 }
 
 export function useGetOneTrips(tripId) {
-    const [trip, setTrip] = useState({});
+    const [trip, setTrip] = useState({
+        resort: '',
+        country: '',
+        imageUrl: '',
+        altitude: '',
+        kmOfSlopes: '',
+        numberOfLifts: '',
+        numberOfHotels: '',
+        bestHotelPrice: '',
+        highestPeak: '',
+        skiMap: '',
+        description: ''
+    });
 
     useEffect(() => {
         (async () => {

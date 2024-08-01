@@ -1,11 +1,14 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useGetOneTrips } from "../../hooks/useTrips";
 import Comments from "./comments/Comments";
+import { useAuthContext } from "../../contexts/AuthContext";
 
 export default function TripDetails() {
     const { tripId } = useParams();
-
+    const { userId } = useAuthContext();
     const [trip, setTrip] = useGetOneTrips(tripId);
+
+    const isOwner = trip._ownerId === userId;
 
     return (
         <div className="bg-white">
@@ -43,6 +46,13 @@ export default function TripDetails() {
                             <dt className="font-medium text-gray-900">{`${trip.highestPeak} m.`}</dt>
                             <dd className="mt-2 text-sm text-gray-500">Highest Peak</dd>
                         </div>
+                        <Link to={`/catalog/${tripId}/edit`}>
+                            <button
+                                className="align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-gray-900 text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
+                                type="button">
+                                Edit
+                            </button>
+                        </Link>
                     </dl>
                 </div>
                 <div className="mx-auto grid max-w-2xl grid-cols-1 items-center gap-x-8 gap-y-16 px-4 py-24 sm:px-6 sm:py-32 lg:max-w-7xl lg:grid-cols-2 lg:px-8">

@@ -11,6 +11,7 @@ import Login from "./components/login/Login"
 import Register from "./components/register/Register"
 import CreateTrip from "./components/createTrip/CreateTrip"
 import Logout from "./components/logout/Logout"
+import Edit from "./components/edit/Edit"
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
         <Route path="/logout" element={<Logout />} />
         <Route path="/catalog" element={<TripsList />} />
         <Route path="/catalog/:tripId/details" element={<Details />} />
+        <Route path="/catalog/:tripId/edit" element={<Edit />} />
         <Route path="/create" element={<CreateTrip />} />
         <Route path="/about" element={<About />} />
       </Routes>

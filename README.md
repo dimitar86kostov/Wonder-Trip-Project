@@ -1,6 +1,8 @@
 # wonder-trip-2024
 SoftUni React Course Project
 
+In this web application users upload different ski resorts with required details. They can do all CRUD operations of their own posts and leave comments on every other posts. 
+
 ## 1. Initialize Project
 - [x] Initialize git repo
 - [x] Add softuni practice server
@@ -25,42 +27,41 @@ SoftUni React Course Project
   - [x] Details link
   - [x] Details route
   - [x] Api function - getOne
-- [] Home - Latest Trips
+- [x] Home - Latest Trips
 ## 5. Comments
-- [] Create service for nested resource `comments`
-- [] Post comment to server
-- [] Read comments from server
-- [] Add comments in the component
-- [] Clear form
+- [x] Create service for nested resource `comments`
+- [x] Post comment to server
+- [x] Read comments from server
+- [x] Add comments in the component
+- [x] Clear form
 ## 6. API Hooks
 - [x] Form Hook
 - [x] TripAPI Hooks
-- [ ] Comment Hooks
+- [x] Comment Hooks
 ## 7. Authentication
 - [x] Auth API
   - [x] Login
   - [x] Register
-  - [ ] Logout
+  - [x] Logout
 - [x] Auth API hook
   - [x] Login
   - [x] Register
-  - [ ] Logout
+  - [x] Logout
 - [x] Auth state & context
 - [x] Token management
 - [x] Login
 - [x] Register
   - [x] Add form validation
-- [ ] Logout
-- [] Authorized Requests
+- [x] Logout
+- [x] Authorized Requests
 ## 8. UI Implementation 
-- [] Dynamic navigation
+- [x] Dynamic navigation
 - [x] Create trip
-  - [] API function
-  - [] Hook
-- [ ] Latest trips
+  - [x] API function
+  - [x] Hook
+- [x] Latest trips
 
 ## Notes
 
 URL `http://localhost:3030/data/games?sortBy=_createdOn%20desc&pageSize=3`
-USE URLSearchParams
-seedData - line 1341 in server.js
+
