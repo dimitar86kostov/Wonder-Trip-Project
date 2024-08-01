@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
-import commentsAPI from "../api/comments-spi";
-import usePersistedState from "./usePersistedState";
+import commentsAPI from "../api/comments-api";
 
 export function useCreateComment() {
-    const commentCreateHandler = (tripId, comment) => commentsAPI.create(tripId, comment);
+    const createHandler = (tripId, comment) => commentsAPI.create(tripId, comment);
 
-    return commentCreateHandler;
+    return createHandler;
 }
 
 export function useGetAllComments(tripId) {
@@ -14,7 +13,7 @@ export function useGetAllComments(tripId) {
     useEffect(() => {
         (async () => {
             const result = await commentsAPI.getAll(tripId);
-
+            console.log(result);
             setComments(result);
         })();
     }, [tripId]);

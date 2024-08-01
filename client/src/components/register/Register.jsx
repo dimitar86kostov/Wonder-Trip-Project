@@ -54,18 +54,7 @@ export default function Register() {
                         </Typography>
                         <form onSubmit={submitHandler} className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
                             <div className="mb-1 flex flex-col gap-6">
-                                <Typography variant="h6" color="blue-gray" className="-mb-3">
-                                    Your Name
-                                </Typography>
-                                <Input
-                                    name="username"
-                                    value={values.username}
-                                    onChange={changeHandler}
-                                    size="lg"
-                                    placeholder="Michael"
-                                    className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-                                    labelProps={{ className: "before:content-none after:content-none", }}
-                                />
+                                
                                 <Typography variant="h6" color="blue-gray" className="-mb-3">
                                     Your Email
                                 </Typography>
@@ -107,7 +96,7 @@ export default function Register() {
                                 />
                             </div>
 
-                            <Typography className="mb-16 text-gray-600 font-normal text-[18px]">
+                            <Typography variant="h6" color="blue-gray" className="-mb-3">
                                 {error
                                     && (<h1>
                                         <span style={{ color: 'red' }}>{error}</span>

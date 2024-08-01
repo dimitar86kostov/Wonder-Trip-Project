@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../../contexts/AuthContext";
 
-export function Header() {
+export default function Header() {
     const [openNav, setOpenNav] = React.useState(false);
 
     React.useEffect(() => {

@@ -2,8 +2,8 @@ import { Routes, Route } from "react-router-dom"
 import { AuthContextProvider } from "./contexts/AuthContext"
 
 
-import { TripsList } from "./components/tripsList/TripsList"
-import { Header } from "./components/header/Header"
+import TripsList from "./components/tripsList/TripsList"
+import Header from "./components/header/Header"
 import Home from "./components/home/Home"
 import About from "./components/about/About"
 import Details from "./components/details/Details"

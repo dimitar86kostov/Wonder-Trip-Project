@@ -11,6 +11,8 @@ export default function TripDetails() {
         <div className="bg-white">
             <div className="mx-auto grid max-w-2xl grid-cols-1 items-center gap-x-8 gap-y-16 px-4 py-24 sm:px-6 sm:py-32 lg:max-w-7xl lg:grid-cols-2 lg:px-8">
                 <div>
+                    <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"><br />
+                        {trip.resort}</h2>
                     <img
                         alt="Walnut card tray with white powder coated steel divider and 3 punchout holes."
                         src={trip.skiMap}
@@ -24,12 +26,7 @@ export default function TripDetails() {
                     </p>
 
                     <dl className="mt-16 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-y-16 lg:gap-x-8">
-                        {/* {Object.entries(trip).forEach((feature, i) => (
-                            <div key={feature[0][1]} className="border-t border-gray-200 pt-4">
-                                <dt className="font-medium text-gray-900">{feature[1][0]}</dt>
-                                <dd className="mt-2 text-sm text-gray-500">{feature[1][1]}</dd>
-                            </div>
-                        ))} */}
+
                         <div key={trip.altitude} className="border-t border-gray-200 pt-4">
                             <dt className="font-medium text-gray-900">{`${trip.altitude} m.`}</dt>
                             <dd className="mt-2 text-sm text-gray-500">Altitude</dd>
@@ -48,8 +45,10 @@ export default function TripDetails() {
                         </div>
                     </dl>
                 </div>
-                <div className="p-10 grid grid-rows-2 gap-2">
-                    {<Comments key={trip._id} />}
+                <div className="mx-auto grid max-w-2xl grid-cols-1 items-center gap-x-8 gap-y-16 px-4 py-24 sm:px-6 sm:py-32 lg:max-w-7xl lg:grid-cols-2 lg:px-8">
+                    <div className="grid-rows-2 gap-2">
+                        {<Comments key={trip._id} tripId={tripId} {...trip} />}
+                    </div>
                 </div>
             </div>
         </div>

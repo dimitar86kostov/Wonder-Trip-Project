@@ -6,7 +6,7 @@ import { Spinner } from "@material-tailwind/react";
 import { useGetAllTrips } from "../../hooks/useTrips";
 
 
-export function TripsList() {
+export default function TripsList() {
 
   const [trips, setTrips, isFetching] = useGetAllTrips();
 
@@ -35,10 +35,6 @@ export function TripsList() {
     </section>
   );
 }
-
-export default TripsList;
-
-
 
 // const CONTENTS = [
 //   {
