@@ -73,3 +73,9 @@ export function useCreateTrip() {
         create
     };
 }
+
+export function useDeleteTrip() {
+    const remove = (tripId) => tripsAPI.remove(tripId);
+
+    return { remove };
+}

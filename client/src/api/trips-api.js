@@ -16,14 +16,14 @@ const create = (tripData) => request.post(BASE_URL, tripData);
 
 const update = (tripId, tripData) => request.put(`${BASE_URL}/${tripId}`, tripData);
 
-
-// const deleteGame = (tripId) => request.del(BASE_URL, tripId)
+const remove = (tripId) => request.del(`${BASE_URL}/${tripId}`);
 
 const tripsAPI = {
     getAll,
     getOne,
     create,
-    update
+    update,
+    remove
 };
 
 export default tripsAPI;

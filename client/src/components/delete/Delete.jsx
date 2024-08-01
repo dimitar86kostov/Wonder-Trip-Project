@@ -8,8 +8,9 @@ import {
     Typography,
     Input,
 } from "@material-tailwind/react";
-import { useParams } from "react-router-dom";
-import { useGetOneTrips } from "../../hooks/useTrips";
+import { useNavigate, useParams } from "react-router-dom";
+import { useDeleteTrip, useGetOneTrips } from "../../hooks/useTrips";
+import tripsAPI from "../../api/trips-api";
 
 export default function Delete() {
     const [open, setOpen] = React.useState(true);
@@ -17,8 +18,21 @@ export default function Delete() {
 
     const { tripId } = useParams();
     const trip = useGetOneTrips(tripId);
+    const { remove } = useDeleteTrip();
+    const navigate = useNavigate();
 
-    console.log(trip[0].resort);
+    const deleteHandler = async () => {
+
+        try {
+
+            await remove(tripId);
+            navigate('/catalog');
+
+        } catch (err) {
+            console.error(err.message);
+        }
+    };
+
     return (
         <section className="grid place-items-center h-screen">
             <Button onClick={handleOpen}>Open Modal</Button>
@@ -29,27 +43,7 @@ export default function Delete() {
                         alt="exclamation"
                         className="w-10 h-10"
                     />
-                    <IconButton
-                        color="gray"
-                        size="sm"
-                        variant="text"
-                        onClick={handleOpen}
-                    >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            strokeWidth={2}
-                            className="h-4 w-4"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M6 18L18 6M6 6l12 12"
-                            />
-                        </svg>
-                    </IconButton>
+                    
                 </DialogHeader>
                 <DialogBody className="overflow-y-scroll">
                     <Typography color="blue-gray" className="mb-1 font-bold">
@@ -59,34 +53,21 @@ export default function Delete() {
                         variant="paragraph"
                         className="font-normal text-gray-600 max-w-lg"
                     >
-                        Are you sure you want to delete {trip[0].resort} and all related comments?
+                        Are you sure you want to delete {trip[0].resort} and all related comments?<br />
                         This action cannot be undone.
                     </Typography>
-                    <div>
-                        <Typography
-                            variant="small"
-                            className="mt-6 mb-2 text-gray-600 font-normal"
-                        >
-                            Please type{" "}
-                            <strong className="text-gray-900">
-                                &quot;Delete {trip[0].resort}&quot;
-                            </strong>{" "}
-                            to confirm.
-                        </Typography>
-                        <div className="flex flex-col md:flex-row gap-2">
-                            <Input
-                                color="gray"
-                                label="Delete"
-                                size="lg"
-                                className="w-full md:max-w-lg"
-                            />
-                            <Button color="gray" className="w-full lg:max-w-[15rem]">
-                                I understand, delete this post
-                            </Button>
-                        </div>
+                    <img 
+                        src={trip[0].imageUrl}
+                        alt="#"
+                        className="w-100 h-100"
+                    />
+                    <div className="p-20">
+                        <Button onClick={deleteHandler} color="gray" >
+                            I understand, delete this post
+                        </Button>
                     </div>
                 </DialogBody>
             </Dialog>
-        </section>
+        </section >
     );
 }
