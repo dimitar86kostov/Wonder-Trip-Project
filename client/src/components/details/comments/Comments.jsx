@@ -1,3 +1,4 @@
+import commentsAPI from "../../../api/comments-api";
 import { useAuthContext } from "../../../contexts/AuthContext";
 import { useCreateComment, useGetAllComments } from "../../../hooks/useComments";
 import useForm from "../../../hooks/useForm";
@@ -10,25 +11,29 @@ export default function Comments(trip) {
     const tripId = trip._id;
 
     const createComment = useCreateComment();
-    const [comments, setComments] = useGetAllComments(tripId);
+    const [comments, setComments ] = useGetAllComments(tripId);
+
     const { isAuthenticated } = useAuthContext();
 
     const commentHandler = async ({ comment }) => {
         try {
-            const newComment = await createComment(tripId, comment);
+            await createComment(tripId, comment);
+            const comments = await commentsAPI.getAll(tripId)
 
-            setComments(oldComments => ([...oldComments, newComment]));
+            // setComments(oldComments => ([...oldComments, newComment]));
+            setComments(comments)
+            
 
         } catch (err) {
             console.error(err.message);
         }
     }
 
-    const { values, changeHandler } = useForm(initValues, commentHandler)
+    const { values, changeHandler, submitHandler } = useForm(initValues, commentHandler)
 
-    const submitHandler = (e) => {
-        commentHandler(values)
-    };
+    // const submitHandler = (e) => {
+    //     commentHandler(values)
+    // };
 
     return (
         <>

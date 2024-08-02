@@ -69,9 +69,7 @@ export function useGetOneTrips(tripId) {
 export function useCreateTrip() {
     const create = (tripData) => tripsAPI.create(tripData);
 
-    return {
-        create
-    };
+    return { create };
 }
 
 export function useDeleteTrip() {
