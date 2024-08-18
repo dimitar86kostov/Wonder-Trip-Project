@@ -15,7 +15,7 @@ export default function TripsList() {
       <div className="mx-auto text-center mb-16">
 
         <Typography variant="h1" className="my-4 text-4xl">
-          Catalog of our trips
+          Catalog Of Our Newest Resorts
         </Typography>
         <Typography className="!font-normal text-gray-500 mx-auto max-w-2xl">
           Travel becomes a strategy for accumulating photographs.
