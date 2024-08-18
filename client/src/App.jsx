@@ -30,7 +30,7 @@ function App() {
         <Route path="/logout" element={<Logout />} />
         <Route path="/catalog" element={<TripsList />} />
         <Route path="/create" element={<CreateTrip />} />
-        <Route path="/catalog/:tripId/details" element={<Details />} />
+        <Route path="/catalog/:tripId" element={<Details />} />
         <Route path="/catalog/:tripId/edit" element={<Edit />} />
         <Route path="/catalog/:tripId/delete" element={<Delete />} />
         <Route path="*" element={<NotFound />} />
