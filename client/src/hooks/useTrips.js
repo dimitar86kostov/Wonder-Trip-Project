@@ -4,6 +4,25 @@ import tripsAPI from "../api/trips-api";
 import { useAuthContext } from "../contexts/AuthContext";
 import { useNavigate } from 'react-router-dom'
 
+export function useGetLatestTrips() {
+    const [trips, setTrips] = useState([]);
+    const [isFetching, setIsFetching] = useState(true);
+
+    useEffect(() => {
+        (async () => {
+            const result = await tripsAPI.getLatest();
+
+            setTrips(result)
+            setIsFetching(false)
+
+
+        })();
+    }, []);
+
+    return [trips, setTrips, isFetching];
+}
+
+
 export function useGetAllTrips() {
     const [trips, setTrips] = useState({});
     const [isFetching, setIsFetching] = useState(true);

@@ -2,6 +2,21 @@ import * as request from './requester';
 
 const BASE_URL = "http://localhost:3030/data/resorts";
 
+const getLatest = async () => {
+
+    const searchParams = new URLSearchParams({
+        sortBy: 'kmOfSlopes desc',
+        pageSize: 3
+    });
+
+    const params = searchParams.toString().replaceAll("+", "%20");
+
+    const result = await request.get(`${BASE_URL}?${params}`);
+
+    return Object.values(result);
+};
+
+
 const getAll = async () => {
     const response = await request.get(`${BASE_URL}`);
 
@@ -23,7 +38,8 @@ const tripsAPI = {
     getOne,
     create,
     update,
-    remove
+    remove,
+    getLatest
 };
 
 export default tripsAPI;
