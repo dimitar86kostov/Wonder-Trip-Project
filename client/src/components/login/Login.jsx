@@ -20,13 +20,19 @@ export function Login() {
     const login = useLogin();
 
     const loginSubmitHandler = async ({ email, password }) => {
+
+        if (!email || !password) {
+            return setError("All fields are required")
+        }
+
         try {
             await login(email, password);
             
             navigate('/');
 
         } catch (err) {
-            setError(err.message)
+                       
+            setError("Invalid username or password")
         }
     }
 
