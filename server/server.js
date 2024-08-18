@@ -1353,6 +1353,7 @@
                 "bestHotelPrice": "889",
                 "highestPeak": "Matterhorn 4478",
                 "skiMap": "http://www.ski-zermatt.com/mattnet/pics/zermatt_skimap.jpg",
+                "rating": 5,
                 "description": "Zermatt, town, Valais canton, southern Switzerland. It lies at the head of the Mattervisp Valley and at the foot of the Matterhorn (14,692 feet [4,478 m]), 23 miles (37 km) southeast of Sion. Its name is derived from its position Zur Matte ('in the Alpine meadow') at an elevation of 5,302 feet (1,616 m)."
 
             },
@@ -1368,6 +1369,7 @@
                 "bestHotelPrice": "281",
                 "highestPeak": "Cima Bianca 3020",
                 "skiMap": "https://www.skiitaly.co.za/images/livigno-ski-map.jpg",
+                "rating": 4,
                 "description": "Livigno, town in the Italian Alps, is known for its high altitude skiing and snowboarding. Situated in the province of Sondrio, Lombardy, the resort offers a variety of slopes for all skill levels and a vibrant après-ski scene."
             },
             "ce8dbe12-2d54-4c96-8c64-7a7a06f7b265": {
@@ -1382,6 +1384,7 @@
                 "bestHotelPrice": "382",
                 "highestPeak": "Matterhorn 4478",
                 "skiMap": "http://www.ski-zermatt.com/mattnet/pics/cervinia_skimap.jpg",
+                "rating": 3,
                 "description": "Cervinia, located in the Aosta Valley, Italy, is renowned for its extensive ski area and breathtaking views of the Matterhorn. The resort is a popular destination for both winter sports enthusiasts and summer tourists."
             },
             "a7f56f41-28cd-406e-bff0-4423ff6de6ea": {
@@ -1396,6 +1399,7 @@
                 "bestHotelPrice": "422",
                 "highestPeak": "Ahornspitze 2976",
                 "skiMap": "https://www.powderhounds.com/site/DefaultSite/filesystem/images/Europe/Austria/Mayrhofen/trailmap.jpg",
+                "rating": 4,
                 "description": "Mayrhofen, situated in the Zillertal Valley of Austria, is a versatile ski resort known for its diverse slopes and lively atmosphere. The town provides a gateway to a vast skiing area, including the renowned Hintertux Glacier."
 
             },
@@ -1411,6 +1415,7 @@
                 "bestHotelPrice": "459",
                 "highestPeak": "Pointe du Bouchet 3230",
                 "skiMap": "https://www.valthorens.com/app/uploads/2023/12/Plan-VT-Orelle-sans-lCgende-sans-zoom_page-0001-1024x771.jpg",
+                "rating": 5,
                 "description": "Val Thorens, the highest ski resort in Europe, is located in the Tarentaise Valley, France. It forms part of the Trois Vallées ski area and is famed for its snow reliability, extensive ski runs, and vibrant village atmosphere."
             }
         },

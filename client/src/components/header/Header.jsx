@@ -19,14 +19,20 @@ export default function Header() {
         <nav
             className="block w-full max-w-screen-xl px-6 py-3 mx-auto text-white bg-white border shadow-md rounded-xl border-white/80 bg-opacity-80 backdrop-blur-2xl backdrop-saturate-200">
             <div className="flex items-center justify-between text-blue-gray-900">
-                <Link to="/"
-                    className="mr-4 block cursor-pointer py-1.5 font-sans text-base font-semibold leading-relaxed tracking-normal text-inherit antialiased">
-                    Wonder Trip
-                </Link>
+                <h1>
+                    <img
+                        src="https://scontent.fsof10-1.fna.fbcdn.net/v/t39.30808-6/316535498_571138691686110_6533284081313083357_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=qGd52xbvzKkQ7kNvgFQpaBW&_nc_ht=scontent.fsof10-1.fna&oh=00_AYATwdZPGnAy5qmSw8GyUfcY7r0t3N5DKNRNVFTVvI8IiQ&oe=66C7ACC7" alt="logo-ct" className="w-10"
+                    />
+
+                    <Link to="/"
+
+                        className="mr-4 block cursor-pointer py-1.5 font-sans text-base font-semibold leading-relaxed tracking-normal text-inherit antialiased">
+                    </Link>
+                </h1>
                 {user
                     ? <Link to="/"
                         className="mr-4 block cursor-pointer py-1.5 font-sans text-base font-semibold leading-relaxed tracking-normal text-inherit antialiased">
-                        {user}
+                        Welcome {user}
                     </Link>
                     : "Guest"
                 }
@@ -89,115 +95,5 @@ export default function Header() {
             </div>
         </nav>
     );
-
-    // return (
-    //     <div className="-m-6 max-h-[768px] w-[calc(100%+48px)] overflow-scroll">
-
-    //         <Navbar className="sticky top-0 z-10 h-max max-w-full rounded-none px-4 py-2 lg:px-8 lg:py-4">
-    //             <div className="flex items-center justify-between text-blue-gray-900">
-    //                 <Typography
-    //                     as={Link}
-    //                     to="/"
-    //                     className="mr-4 cursor-pointer py-1.5 font-medium"
-    //                 >
-    //                     Wonder Travel
-    //                 </Typography>
-
-    //                 <div className="flex items-center gap-4">
-    //                     <div className="mr-4 hidden lg:block">{navList}</div>
-    //                     <div className="flex items-center gap-x-1">
-    //                         {/* <Button
-    //                             variant="text"
-    //                             size="sm"
-    //                             className="hidden lg:inline-block"
-    //                         >
-    //                             <span>Log In</span>
-    //                         </Button>
-    //                         <Button
-    //                             as={Link}
-    //                             to="/register"
-    //                             variant="gradient"
-    //                             size="sm"
-    //                             className="hidden lg:inline-block"
-    //                         >
-    //                             <span>Sign up</span>
-    //                         </Button> */}
-    //                         <Typography
-    //                             as={Link}
-    //                             to="/register"
-    //                             className="mr-4 cursor-pointer py-1.5 font-medium"
-    //                         >
-    //                             <span>Sign Up</span>
-    //                         </Typography>
-    //                         <Typography
-    //                             as={Link}
-    //                             to="/login"
-    //                             className="mr-4 cursor-pointer py-1.5 font-medium"
-    //                         >
-    //                             <span>Log In</span>
-    //                         </Typography>
-    //                         <Typography
-    //                             as={Link}
-    //                             to="/logout"
-    //                             className="mr-4 cursor-pointer py-1.5 font-medium"
-    //                         >
-    //                             <span>Log Out</span>
-    //                         </Typography>
-    //                     </div>
-    //                     <IconButton
-    //                         variant="text"
-    //                         className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
-    //                         ripple={false}
-    //                         onClick={() => setOpenNav(!openNav)}
-    //                     >
-    //                         {openNav ? (
-    //                             <svg
-    //                                 xmlns="http://www.w3.org/2000/svg"
-    //                                 fill="none"
-    //                                 className="h-6 w-6"
-    //                                 viewBox="0 0 24 24"
-    //                                 stroke="currentColor"
-    //                                 strokeWidth={2}
-    //                             >
-    //                                 <path
-    //                                     strokeLinecap="round"
-    //                                     strokeLinejoin="round"
-    //                                     d="M6 18L18 6M6 6l12 12"
-    //                                 />
-    //                             </svg>
-    //                         ) : (
-    //                             <svg
-    //                                 xmlns="http://www.w3.org/2000/svg"
-    //                                 className="h-6 w-6"
-    //                                 fill="none"
-    //                                 stroke="currentColor"
-    //                                 strokeWidth={2}
-    //                             >
-    //                                 <path
-    //                                     strokeLinecap="round"
-    //                                     strokeLinejoin="round"
-    //                                     d="M4 6h16M4 12h16M4 18h16"
-    //                                 />
-    //                             </svg>
-    //                         )}
-    //                     </IconButton>
-    //                 </div>
-    //             </div>
-    //             <Collapse open={openNav}>
-    //                 {navList}
-    //                 <div className="flex items-center gap-x-1">
-    //                     <Button fullWidth variant="text" size="sm" className="">
-    //                         <span>Log In</span>
-    //                     </Button>
-    //                     <Button fullWidth variant="gradient" size="sm" className="">
-    //                         <span>Sign in</span>
-    //                     </Button>
-    //                 </div>
-    //             </Collapse>
-    //         </Navbar>
-
-
-    //     </div>
-    // );
 }
 

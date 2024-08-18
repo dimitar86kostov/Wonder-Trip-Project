@@ -7,7 +7,14 @@ import {
     Button,
     Tooltip,
     IconButton,
+    Rating,
+    rating,
 } from "@material-tailwind/react";
+
+
+export function DefaultRating() {
+    return <Rating value={4} />;
+}
 
 // import { ButtonGroup, Button } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
@@ -25,6 +32,7 @@ export default function TripListItem({
     bestHotelPrice,
     highestPeak,
     skiMap,
+    rating,
     description,
 }) {
 
@@ -58,7 +66,9 @@ export default function TripListItem({
                     <Typography variant="h2" color="blue-gray" className="font-medium">
                         {resort}
                     </Typography>
-                    <Typography
+                    <Rating value={rating} readonly/>
+                    
+                    {/* <Typography
                         color="blue-gray"
                         className="flex items-center gap-1.5 font-normal"
                     >
@@ -74,8 +84,8 @@ export default function TripListItem({
                                 clipRule="evenodd"
                             />
                         </svg>
-                        4.0
-                    </Typography>
+                        {rating}
+                    </Typography> */}
                 </div>
                 <Typography color="gray">
                     {country}
@@ -145,7 +155,7 @@ export default function TripListItem({
                             </svg>
                         </span>
                     </Tooltip> */}
-                    <Tooltip content="Fire alert">
+                    <Tooltip content="Fire place">
                         <span className="cursor-pointer rounded-full border border-gray-900/5 bg-gray-900/5 p-3 text-gray-900 transition-colors hover:border-gray-900/10 hover:bg-gray-900/10 hover:!opacity-100 group-hover:opacity-70">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
