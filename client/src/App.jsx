@@ -13,6 +13,7 @@ import CreateTrip from "./components/createTrip/CreateTrip"
 import Logout from "./components/logout/Logout"
 import Edit from "./components/edit/Edit"
 import Delete from "./components/delete/Delete"
+import Footer from "./components/footer/Footer"
 
 function App() {
 
@@ -31,8 +32,8 @@ function App() {
         <Route path="/catalog/:tripId/details" element={<Details />} />
         <Route path="/catalog/:tripId/edit" element={<Edit />} />
         <Route path="/catalog/:tripId/delete" element={<Delete />} />
-        <Route path="/about" element={<About />} />
       </Routes>
+      <Footer />
     </AuthContextProvider>
 
   )
