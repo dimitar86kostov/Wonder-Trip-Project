@@ -1,22 +1,23 @@
 'use client'
 import { Card, Spinner, Typography } from "@material-tailwind/react";
-import { useGetAllTrips } from "../../hooks/useTrips";
+import { useGetAllTrips, useGetLatestTrips } from "../../hooks/useTrips";
 import TripCard from "./tripCard/TripCard";
 
 
 export default function Home() {
 
-    const [trips, setTrips, isFetching] = useGetAllTrips();
+    const [trips, setTrips, isFetching] = useGetLatestTrips();
+    console.log(trips);
 
     return (
         <section className="py-10 px-8">
             <div className="mx-auto text-center mb-16">
 
                 <Typography variant="h1" className="my-4 text-4xl">
-                    Find What You Need
+                    Find The Biggest Ski Resort
                 </Typography>
                 <Typography className="!font-normal text-gray-500 mx-auto max-w-2xl">
-                    Travel becomes a strategy for accumulating photographs.
+                    Here you can find the 3 resorts with the moste km. of slopes
                 </Typography>
             </div>
             <div className="mx-auto container">
