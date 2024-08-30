@@ -15,6 +15,8 @@ import Edit from "./components/edit/Edit"
 import Delete from "./components/delete/Delete"
 import Footer from "./components/footer/Footer"
 import NotFound from "./components/404/NotFound"
+import EditComment from "./components/details/comments/editComment/EditComment"
+import ErrorBoundary from './components/ErrorBoundary'
 
 function App() {
 
@@ -23,18 +25,21 @@ function App() {
     <AuthContextProvider >
       <Header />
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/logout" element={<Logout />} />
-        <Route path="/catalog" element={<TripsList />} />
-        <Route path="/create" element={<CreateTrip />} />
-        <Route path="/catalog/:tripId" element={<Details />} />
-        <Route path="/catalog/:tripId/edit" element={<Edit />} />
-        <Route path="/catalog/:tripId/delete" element={<Delete />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <ErrorBoundary>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/logout" element={<Logout />} />
+          <Route path="/catalog" element={<TripsList />} />
+          <Route path="/create" element={<CreateTrip />} />
+          <Route path="/catalog/:tripId/*" element={<Details />} />
+          <Route path="/catalog/:tripId/edit" element={<Edit />} />
+          <Route path="/catalog/:tripId/comment/:commentId/edit" element={<EditComment />} />
+          <Route path="/catalog/:tripId/delete" element={<Delete />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </ErrorBoundary>
 
       <Footer />
     </AuthContextProvider>
