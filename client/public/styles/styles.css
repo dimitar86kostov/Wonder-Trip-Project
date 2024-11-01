@@ -2,3 +2,7 @@
 @import "welcome.css";
 @import "button.css";
 @import "comments.css";
+
+.img-container > img{
+    min-height: 400px;
+}
