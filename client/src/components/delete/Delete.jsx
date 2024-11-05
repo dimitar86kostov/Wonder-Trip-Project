@@ -57,7 +57,7 @@ export default function Delete() {
                         This action cannot be undone.
                     </Typography>
                     <img 
-                        src={trip[0].imageUrl}
+                        // src={trip[0].imageUrl}
                         alt="#"
                         className="w-100 h-100"
                     />

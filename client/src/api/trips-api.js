@@ -18,11 +18,15 @@ const getLatest = async () => {
 
 
 const getAll = async () => {
-    const response = await request.get(`${BASE_URL}`);
+    const searchParams = new URLSearchParams({
+        sortBy: 'kmOfSlopes desc',
+    });
 
-    const result = Object.values(response);
+    const params = searchParams.toString().replaceAll("+", "%20");
 
-    return result;
+    const result = await request.get(`${BASE_URL}?${params}`);
+
+    return Object.values(result);
 };
 
 const getOne = (tripId) => request.get(`${BASE_URL}/${tripId}`);
@@ -33,13 +37,27 @@ const update = (tripId, tripData) => request.put(`${BASE_URL}/${tripId}`, tripDa
 
 const remove = (tripId) => request.del(`${BASE_URL}/${tripId}`);
 
+const searching = async (string) => {
+
+    const searchParams = new URLSearchParams({
+        where: `where=resort=${string}`,
+    });
+
+    const params = searchParams.toString().replaceAll("+", "%20");
+
+    const result = await request.get(`${BASE_URL}?${params}`);
+
+    return Object.values(result);
+};
+
 const tripsAPI = {
     getAll,
     getOne,
     create,
     update,
     remove,
-    getLatest
+    getLatest,
+    searching
 };
 
 export default tripsAPI;

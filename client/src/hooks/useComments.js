@@ -7,6 +7,12 @@ export function useCreateComment() {
     return createHandler;
 }
 
+export function useEditComment() {
+    const editingComment = (commentId, commentData) => commentsAPI.update(commentId, commentData);
+
+    return editingComment;
+}
+
 export function useGetAllComments(tripId) {
     const [comments, setComments] = useState([]);
 
@@ -22,4 +28,22 @@ export function useGetAllComments(tripId) {
         comments,
         setComments
     ];
+}
+
+export function useGetCommentById(commentId) {
+    const [comment, setComment] = useState({
+        text: "",
+    });
+
+    useEffect(() => {
+        (async () => {
+            const comment = await commentsAPI.getCommentById(commentId);
+console.log(comment);
+
+            setComment(comment);
+        })();
+    }, []);
+
+    return {comment};
+
 }

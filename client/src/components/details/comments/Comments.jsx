@@ -1,7 +1,9 @@
 import commentsAPI from "../../../api/comments-api";
 import { useAuthContext } from "../../../contexts/AuthContext";
-import { useCreateComment, useGetAllComments } from "../../../hooks/useComments";
+import { useCreateComment, useEditComment, useGetAllComments } from "../../../hooks/useComments";
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import useForm from "../../../hooks/useForm";
+import DetailsComments from "./detailsComments/DetailsComments";
 
 const initValues = {
     comment: '',
@@ -9,20 +11,19 @@ const initValues = {
 
 export default function Comments(trip) {
     const tripId = trip._id;
-
     const createComment = useCreateComment();
-    const [comments, setComments ] = useGetAllComments(tripId);
-
-    const { isAuthenticated } = useAuthContext();
+    const updateComment = useEditComment();
+    const [comments, setComments] = useGetAllComments(tripId);
+    const { isAuthenticated, userId } = useAuthContext();
 
     const commentHandler = async ({ comment }) => {
         try {
             await createComment(tripId, comment);
             const comments = await commentsAPI.getAll(tripId)
 
-            // setComments(oldComments => ([...oldComments, newComment]));
+
             setComments(comments)
-            
+
 
         } catch (err) {
             console.error(err.message);
@@ -31,22 +32,26 @@ export default function Comments(trip) {
 
     const { values, changeHandler, submitHandler } = useForm(initValues, commentHandler)
 
-    // const submitHandler = (e) => {
-    //     commentHandler(values)
-    // };
-
     return (
         <>
             <div className="details-comments">
                 <h2 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-2xl">Comments:</h2>
                 <ul>
-                    {comments.map(comment =>
-                        <div className="border-t border-gray-200 pt-4" key={comment._id}>
-                            <dt className="font-medium text-gray-900">{comment.text}</dt>
-                            <dd className="mt-2 text-sm text-gray-500">{comment.author.email}</dd>
-                        </div>
-                    )}
-                    {comments.length == 0 && <h2>No comments yet...</h2>}
+
+                    {comments.length == 0
+                        ? <h2>No comments yet...</h2>
+                        : comments.map(c =>
+
+                            <DetailsComments
+                                key={c._id}
+                                commentId={c._id}
+                                text={c.text}
+                                author={c.author}
+                                owner={c.owner_id}
+                                userId={userId}
+                                trip={tripId}
+                            />
+                        )}
                 </ul>
             </div>
             {/* text area */}
@@ -82,11 +87,14 @@ export default function Comments(trip) {
                                     </span>
                                 </button>
                                 <div className="flex gap-2">
-                                    <button
+                                    {/* <button
                                         className="px-4 py-2 font-sans text-xs font-bold text-center text-gray-900 uppercase align-middle transition-all rounded-md select-none hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                                        type="button">
+                                        type="button"
+                                        onClick={onClose}
+                                    >
+
                                         Close
-                                    </button>
+                                    </button> */}
                                     <button
                                         className="select-none rounded-md bg-gray-900 py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                                         type="submit">

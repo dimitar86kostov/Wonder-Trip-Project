@@ -70,18 +70,40 @@ export function useGetOneTrips(tripId) {
         skiMap: '',
         description: ''
     });
+    const [isFetching, setIsFetching] = useState(true);
+    const navigate = useNavigate();
+
+    const setTripHandler = (trip) => {
+
+        if (typeof trip != 'object' && trip != null) {
+            return
+        }
+        setTrip(trip);
+    }
 
     useEffect(() => {
         (async () => {
-            const result = await tripsAPI.getOne(tripId);
+            try {
+                setIsFetching(true)
+                const result = await tripsAPI.getOne(tripId);
 
-            setTrip(result);
+                setTrip(result);
+                setIsFetching(false)
+
+            } catch (err) {
+                if (err.message == "Resource not found!") {
+                    navigate('/404')
+                }
+                return alert(err.message)
+            }
         })();
     }, [tripId]);
 
     return [
         trip,
-        setTrip
+        setTrip,
+        isFetching,
+        setTripHandler
     ];
 }
 

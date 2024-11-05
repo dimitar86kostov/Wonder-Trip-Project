@@ -3,10 +3,11 @@ import { useEffect, useState } from "react";
 export default function useForm(initValues, submitCallback) {
     const [values, setValues] = useState(initValues);
 
-//Reinitialize
-useEffect(() => {
-    setValues(initValues);
-}, [initValues]);
+
+    //Reinitialize
+    useEffect(() => {
+        setValues(initValues);
+    }, [initValues]);
 
     const submitHandler = (e) => {
         e.preventDefault();
