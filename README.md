@@ -1,6 +1,4 @@
 # wonder-trip-2024
-SoftUni React Course Project
-
 In this web application users upload different ski resorts with required details. They can do all CRUD operations of their own posts and leave comments on every other posts. 
 
 ## 1. Initialize Project
