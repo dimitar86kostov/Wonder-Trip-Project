@@ -3,6 +3,9 @@ import { toast } from 'react-toastify';
 import { useDeleteComment } from '../../../../hooks/useComments';
 import { useCommentsContext } from '../../../../contexts/CommentsContext';
 import { PencilIcon, TrashIcon } from '@heroicons/react/24/outline';
+import ReplyList from "../replies/ReplyList";
+import ReplyForm from "../replies/ReplyForm";
+
 
 const deleteComment = useDeleteComment();
 
@@ -11,6 +14,7 @@ export default function DetailsComments({
     text,
     author,
     userId,
+    replies
 }) {
     const { tripId } = useParams();
     const navigate = useNavigate();
@@ -22,9 +26,9 @@ export default function DetailsComments({
             try {
                 await deleteComment(commentId);
                 toast.success('Comment deleted!');
-                
+
                 setComments(prev => prev.filter(c => c._id !== commentId));
-                
+
             } catch (err) {
                 toast.error('Failed to delete comment');
             }
@@ -34,6 +38,8 @@ export default function DetailsComments({
     const onEdit = () => {
         navigate(`/catalog/${tripId}/comment/${commentId}/edit`);
     };
+
+    
 
     return (
         <div className="border-t border-gray-200 pt-4">
@@ -59,6 +65,10 @@ export default function DetailsComments({
             )}
 
             <dd className="mt-2 text-sm text-gray-500">{author.email}</dd>
+
+            <ReplyList replies={replies || []} commentId={commentId} />
+            {author._id !== userId && <ReplyForm commentId={commentId} />}
+
         </div>
     );
 }

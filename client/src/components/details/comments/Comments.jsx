@@ -1,4 +1,3 @@
-// import commentsAPI from "../../../api/comments-api";
 import { useAuthContext } from "../../../contexts/AuthContext";
 import { useCreateComment, useEditComment, useGetAllComments } from "../../../hooks/useComments";
 import useForm from "../../../hooks/useForm";
@@ -53,6 +52,7 @@ export default function Comments({ trip, tripId, setTripHandler }) {
                                 trip={tripId}
                                 setComments={setComments}
                                 comments={comments}
+                                replies={c.replies}
                             />
                         )
                     }

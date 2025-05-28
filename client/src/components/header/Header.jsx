@@ -158,11 +158,7 @@ export default function Header() {
                             </Link>
                         </li>
 
-                        {/* <li className="block p-1 font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900">
-                            <Link to="/about" className="flex items-center transition-colors hover:text-blue-500">
-                                About
-                            </Link>
-                        </li> */}
+            
                         {isAuthenticated
                             ?
                             <ul className="flex flex-col gap-2 my-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">

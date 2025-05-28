@@ -35,9 +35,10 @@ export function useLogout() {
     const { logout: localLogout } = useAuthContext();
 
     const logoutHandler = async () => {
-
-        await logout();
+        // Изчистваме само auth-related информация
+        localStorage.removeItem('auth'); 
         localLogout();
-    }
-    return logoutHandler
+    };
+
+    return logoutHandler;
 }
