@@ -6,15 +6,13 @@ async function requester(method, url, data) {
     // const accessToken = localStorage.getItem('accessToken');
     const accessToken = getAccessToken();
 
+    options.method = method;
+
     if (accessToken) {
         options.headers = {
             ...options.headers,
             'x-authorization': accessToken,
         }
-    }
-
-    if (method != 'GET') {
-        options.method = method;
     }
 
     if (data) {

@@ -36,14 +36,26 @@ export function useGetCommentById(commentId) {
     });
 
     useEffect(() => {
-        (async () => {
-            const comment = await commentsAPI.getCommentById(commentId);
-console.log(comment);
+        commentService.getCommentById(commentId)
+            .then(res => {
+                if (res?.text) {
+                    setText(res.text);
+                } else {
+                    toast.error('Comment not found or empty');
+                }
+            })
+            .catch(() => toast.error('Failed to load comment'));
+    }, [commentId]);
 
-            setComment(comment);
-        })();
-    }, []);
 
-    return {comment};
+    return { comment };
 
+
+}
+
+export function useDeleteComment() {
+
+    const deleteHandler = (commentId) => commentsAPI.remove(commentId);
+
+    return deleteHandler;
 }

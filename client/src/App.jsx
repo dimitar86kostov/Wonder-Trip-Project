@@ -1,5 +1,8 @@
 import { Routes, Route } from "react-router-dom"
 import { AuthContextProvider } from "./contexts/AuthContext"
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { CommentsProvider } from './contexts/CommentsContext';
 
 
 import TripsList from "./components/tripsList/TripsList"
@@ -24,7 +27,10 @@ function App() {
 
   return (
     <AuthContextProvider >
+      
       <Header />
+
+      <ToastContainer position="top-right" autoClose={3000} />
 
       <ErrorBoundary>
         <Routes>
@@ -39,7 +45,8 @@ function App() {
             <Route path="/logout" element={<Logout />} />
           </Route>
           <Route path="/catalog/:tripId/*" element={<Details />} />
-          <Route path="/catalog/:tripId/comment/:commentId/edit" element={<EditComment />} />
+          <Route path=":tripId/comment/:commentId/edit" element={<EditComment />} />
+
           <Route path="*" element={<NotFound />} />
         </Routes>
       </ErrorBoundary>

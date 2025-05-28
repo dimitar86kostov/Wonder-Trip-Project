@@ -1,71 +1,71 @@
-import { useParams } from "react-router-dom";
-import { useEditComment, useGetCommentById } from "../../../../hooks/useComments";
-import { useNavigate } from 'react-router-dom'
-import { Input } from "@material-tailwind/react";
-import React from "react";
-import {
-    Button,
-    Dialog,
-    DialogHeader,
-    DialogBody,
-    DialogFooter,
-} from "@material-tailwind/react";
-import useForm from "../../../../hooks/useForm";
+import { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import commentsAPI from '../../../../api/comments-api';
+import { useCommentsContext } from '../../../../contexts/CommentsContext';
 
-export default function EditComment({
-    setTrip
-}) {
-    const { tripId, commentId } = useParams();
-    const { comment } = useGetCommentById(commentId);
-    const editComment = useEditComment();
+export default function EditComment() {
+    const { commentId, tripId } = useParams();
     const navigate = useNavigate();
-    const [open, setOpen] = React.useState(false);
 
-    const handleOpen = () => setOpen(!open);
+    const { comments, setComments } = useCommentsContext(); // Взимаме от контекста
+    const [text, setText] = useState('');
 
-    const editHandler = async (val, changes) => {
-        console.log(val);
+    useEffect(() => {
+        const comment = comments?.find(c => c._id === commentId);
+        if (comment) {
+            setText(comment.text);
+        }
+    }, [commentId, comments]);
 
-        const content = val.text
-        const data = await editComment(commentId, { content })
-        setTrip(data)
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            await commentsAPI.update(commentId, { text });
+
+            setComments(prev =>
+                prev.map(c => (c._id === commentId ? { ...c, text } : c))
+            );
+
+            toast.success('Comment updated!');
+            navigate(`/catalog/${tripId}`);
+        } catch (err) {
+            console.error(err);
+            toast.error('Failed to update comment');
+        }
+    };
+
+    if (!comments.length) {
+        return <p className="text-red-500">Unable to load comment data</p>;
     }
 
-    const { values, changeHandler, submitHandler } = useForm(comment.text, editHandler)
-
-
-
-
     return (
-        <>
-        <form onSubmit={submitHandler}>
-            <DialogHeader>Edit.</DialogHeader>
-            <div className="w-72">
-                <Input label="Edit your comment" onChange={changeHandler} value={comment.text} />
-            </div>
-        </form>
-            {/* <Button onClick={handleOpen} variant="gradient">
-                Open Dialog
-            </Button>
-            <Dialog open={open} handler={handleOpen}>
-                
-                <DialogBody>
-                    
-                </DialogBody>
-                <DialogFooter>
-                    <Button
-                        variant="text"
-                        color="red"
-                        onClick={handleOpen}
-                        className="mr-1"
+        <div className="max-w-2xl mx-auto mt-10 bg-white p-6 rounded-lg shadow-md">
+            <h2 className="text-xl font-bold mb-4">Edit Your Comment</h2>
+            <form onSubmit={handleSubmit}>
+                <textarea
+                    className="w-full p-3 border rounded-md resize-none mb-4"
+                    value={text}
+                    onChange={(e) => setText(e.target.value)}
+                    required
+                />
+                <div className="flex gap-2">
+                    <button
+                        type="submit"
+                        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
                     >
-                        <span>Cancel</span>
-                    </Button>
-                    <Button variant="gradient" color="green" onClick={handleOpen}>
-                        <span>Confirm</span>
-                    </Button>
-                </DialogFooter>
-            </Dialog> */}
-        </>
+                        Save
+                    </button>
+                    <button
+                        type="button"
+                        onClick={() => navigate(-1)}
+                        className="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400"
+                    >
+                        Cancel
+                    </button>
+                </div>
+            </form>
+        </div>
     );
 }
