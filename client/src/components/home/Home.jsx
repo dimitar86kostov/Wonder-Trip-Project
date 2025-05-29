@@ -5,6 +5,7 @@ import TripCard from "./tripCard/TripCard";
 
 export default function Home() {
     const [trips, setTrips, isFetching] = useGetLatestTrips();
+    useGetAllTrips();
 
     return (
         <section className="py-10 px-4 sm:px-6 lg:px-8">
@@ -12,7 +13,7 @@ export default function Home() {
                 <Typography variant="h1" className="text-4xl mb-4">
                     Find The Biggest Ski Resort
                 </Typography>
-                <Typography className="text-gray-500 max-w-2xl mx-auto">
+                <Typography className="text-gray-800 max-w-2xl mx-auto">
                     Here you can find the 3 resorts with the most km. of slopes
                 </Typography>
             </div>

@@ -106,7 +106,7 @@ export default function Header() {
     return (
         <Navbar
             fullWidth
-            className="mx-auto max-w-screen-xl px-6 py-3 bg-white/90 backdrop-blur-md shadow-md rounded-xl"
+            className="fixed top-0 left-0 right-0 z-50 mx-auto max-w-screen-xl px-6 py-3 bg-white/40 backdrop-blur-md shadow-md rounded-b-xl"
         >
             <div className="flex items-center justify-between text-blue-gray-900">
                 {/* Logo */}
