@@ -3,7 +3,6 @@ import { Card, Spinner, Typography } from "@material-tailwind/react";
 import { useGetAllTrips, useGetLatestTrips } from "../../hooks/useTrips";
 import TripCard from "./tripCard/TripCard";
 
-
 export default function Home() {
     const [trips, setTrips, isFetching] = useGetLatestTrips();
 
@@ -32,3 +31,5 @@ export default function Home() {
         </section>
     );
 }
+
+
