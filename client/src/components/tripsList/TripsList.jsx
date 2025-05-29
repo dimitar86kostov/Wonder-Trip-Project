@@ -45,11 +45,7 @@ export default function TripsList() {
       </div>
 
       <div className="mx-auto container">
-        {/* <div className="grid grid-cols-1 gap-8 lg:grid-cols-3 md:grid-cols-2">
-          {Array.isArray(trips) && trips.map((trip) => (
-            <TripListItem key={trip._id} {...trip} />
-          ))}
-        </div> */}
+      
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3 md:grid-cols-2">
           {searchLoading || isFetching ? (
             <Spinner className="h-16 w-16 items-center text-gray-900/50 mx-auto" />
