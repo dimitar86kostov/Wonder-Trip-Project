@@ -61,7 +61,7 @@ function ProfileMenu() {
                 </Button>
             </MenuHandler>
             <MenuList className="p-1">
-                
+
                 {profileMenuItems.map(({ label, icon, to, danger }) => {
                     const handleClick = () => {
                         closeMenu();
@@ -87,25 +87,6 @@ function ProfileMenu() {
                         </MenuItem>
                     );
                 })}
-
-
-                {/* {profileMenuItems.map(({ label, icon, to, danger }) => (
-                    <MenuItem
-                        key={label}
-                        onClick={closeMenu}
-                        className={`flex items-center gap-2 rounded ${danger
-                            ? "hover:bg-red-500/10 focus:bg-red-500/10 text-red-500"
-                            : ""
-                            }`}
-                        as={to ? Link : "div"}
-                        to={to || "#"}
-                    >
-                        {React.createElement(icon, { className: "h-4 w-4" })}
-                        <Typography as="span" variant="small" className="font-normal">
-                            {label}
-                        </Typography>
-                    </MenuItem>
-                ))} */}
             </MenuList>
         </Menu>
     );
@@ -136,9 +117,6 @@ export default function Header() {
                         className="w-12 h-12 rounded-full transition-transform duration-300 group-hover:scale-110 shadow-md"
 
                     />
-                    {/* <Typography variant="h6" className="hidden sm:block">
-                        Trip Journal
-                    </Typography> */}
                 </Link>
 
 

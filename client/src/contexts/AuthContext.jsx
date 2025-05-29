@@ -22,7 +22,7 @@ export function AuthContextProvider(props) {
 
     const logout = () => {
         localStorage.removeItem('auth');     
-        setAuthState({});                    // нулира състоянието
+        setAuthState({});                    // нулира контекста
     };
 
 

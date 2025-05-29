@@ -1,54 +1,12 @@
 import { Typography } from "@material-tailwind/react";
 
-// const LINKS = [
-//   {
-//     title: "Product",
-//     items: ["Overview", "Features", "Solutions", "Tutorials"],
-//   },
-//   {
-//     title: "Company",
-//     items: ["About us", "Careers", "Press", "News"],
-//   },
-//   {
-//     title: "Resource",
-//     items: ["Blog", "Newsletter", "Events", "Help center"],
-//   },
-// ];
-
 const currentYear = new Date().getFullYear();
 
 export default function Footer() {
     return (
         <footer className="relative w-full">
             <div className="mx-auto w-full max-w-7xl px-8">
-                {/* <div className="grid grid-cols-1 justify-between gap-4 md:grid-cols-2">
-
-          <div className="grid grid-cols-3 justify-between gap-4">
-            {LINKS.map(({ title, items }) => (
-              <ul key={title}>
-                <Typography
-                  variant="small"
-                  color="blue-gray"
-                  className="mb-3 font-medium opacity-40"
-                >
-                  {title}
-                </Typography>
-                {items.map((link) => (
-                  <li key={link}>
-                    <Typography
-                      as="a"
-                      href="#"
-                      color="gray"
-                      className="py-1.5 font-normal transition-colors hover:text-blue-gray-900"
-                    >
-                      {link}
-                    </Typography>
-                  </li>
-                ))}
-              </ul>
-            ))}
-          </div>
-        </div> */}
+           
 
                 <div className="mt-12 flex w-full flex-col items-center justify-center border-t border-blue-gray-50 py-4 md:flex-row md:justify-between">
                     <img src="https://scontent.fsof10-1.fna.fbcdn.net/v/t39.30808-6/316535498_571138691686110_6533284081313083357_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=qGd52xbvzKkQ7kNvgFQpaBW&_nc_ht=scontent.fsof10-1.fna&oh=00_AYATwdZPGnAy5qmSw8GyUfcY7r0t3N5DKNRNVFTVvI8IiQ&oe=66C7ACC7" alt="logo-ct" className="w-10" />

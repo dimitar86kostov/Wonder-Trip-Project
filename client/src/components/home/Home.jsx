@@ -5,31 +5,29 @@ import TripCard from "./tripCard/TripCard";
 
 
 export default function Home() {
-
     const [trips, setTrips, isFetching] = useGetLatestTrips();
-    console.log(trips);
 
     return (
-        <section className="py-10 px-8">
-            <div className="mx-auto text-center mb-16">
-
-                <Typography variant="h1" className="my-4 text-4xl">
+        <section className="py-10 px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+                <Typography variant="h1" className="text-4xl mb-4">
                     Find The Biggest Ski Resort
                 </Typography>
-                <Typography className="!font-normal text-gray-500 mx-auto max-w-2xl">
-                    Here you can find the 3 resorts with the moste km. of slopes
+                <Typography className="text-gray-500 max-w-2xl mx-auto">
+                    Here you can find the 3 resorts with the most km. of slopes
                 </Typography>
             </div>
-            <div className="mx-auto container">
-                <div className="grid grid-cols-1 gap-8 lg:grid-cols-3 md:grid-cols-2">
-                    {isFetching
-                        ? <Spinner style={{ width: '1000px', margin: '100px auto' }} className="h-16 w-16 items-center text-gray-900/50" />
-                        : trips.map((trip) => (<TripCard
-                            key={trip._id}
-                            {...trip}
-                        />))
-                    }
-                </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                {isFetching ? (
+                    <div className="col-span-full flex justify-center">
+                        <Spinner className="h-16 w-16 text-gray-900/50" />
+                    </div>
+                ) : (
+                    trips.map((trip) => (
+                        <TripCard key={trip._id} {...trip} />
+                    ))
+                )}
             </div>
         </section>
     );

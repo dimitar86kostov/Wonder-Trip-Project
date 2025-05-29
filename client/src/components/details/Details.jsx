@@ -4,7 +4,7 @@ import Comments from "./comments/Comments";
 import { useAuthContext } from "../../contexts/AuthContext";
 import EditComment from "./comments/editComment/EditComment";
 import { CommentsProvider } from '../../contexts/CommentsContext';
-import { TrashIcon } from '@heroicons/react/24/outline';
+import { PencilSquareIcon, TrashIcon } from '@heroicons/react/24/outline';
 
 
 export default function TripDetails() {
@@ -71,7 +71,7 @@ export default function TripDetails() {
                                                 className="text-blue-600 hover:text-blue-800"
                                                 title="Edit Trip"
                                             >
-                                                <PencilSquareIcon className="h-6 w-6" />
+                                                <PencilSquareIcon className="h-16 w-16" />
                                             </button>
                                         </Link>
 
@@ -81,7 +81,7 @@ export default function TripDetails() {
                                                 className="text-red-600 hover:text-red-800"
                                                 title="Delete Trip"
                                             >
-                                                <TrashIcon className="h-6 w-6" />
+                                                <TrashIcon className="h-16 w-16" />
                                             </button>
                                         </Link>
                                     </div>
