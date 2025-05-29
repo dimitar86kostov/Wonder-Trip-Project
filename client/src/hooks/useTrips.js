@@ -24,17 +24,20 @@ export function useGetLatestTrips() {
 
 
 export function useGetAllTrips() {
-    const [trips, setTrips] = useState({});
+    const [trips, setTrips] = useState([]);
     const [isFetching, setIsFetching] = useState(true);
     const { logout } = useAuthContext();
     const navigate = useNavigate();
 
+    
     useEffect(() => {
         (
             async () => {
                 try {
                     const result = await tripsAPI.getAll();
-
+                    
+                    console.log(result);
+                    
                     setTrips(result);
                     setIsFetching(false)
                 } catch (err) {

@@ -43,7 +43,6 @@ const searching = async (string) => {
   });
 
   const result = await request.get(`${BASE_URL}?${searchParams}`);
-  console.log(Object.values(result));
   
   return Object.values(result);
 };
