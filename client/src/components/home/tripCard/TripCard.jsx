@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 import { PencilSquareIcon, TrashIcon } from '@heroicons/react/24/outline';
 
 export default function TripCard(trip) {
+  console.log(trip);
+  
   return (
     <div className="bg-white rounded-xl shadow-md overflow-hidden flex flex-col">
       <img
@@ -27,7 +29,7 @@ export default function TripCard(trip) {
             <span className="font-semibold">{trip.altitude} m</span> Altitude
           </div>
           <div>
-            <span className="font-semibold">{trip.bestHotelPrice} €</span> Best Price
+            <span className="font-semibold">{trip.skiPassPrice} €</span> Best Price
           </div>
         </div>
 

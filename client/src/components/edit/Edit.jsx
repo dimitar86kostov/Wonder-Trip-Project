@@ -11,9 +11,9 @@ export default function Edit() {
     const { tripId } = useParams();
     const [trip] = useGetOneTrips(tripId);
 
-    
+
     const editHandler = async (values) => {
-        
+
         await tripsAPI.update(tripId, values);
 
         navigate(`/catalog/${tripId}/details`);
@@ -28,16 +28,10 @@ export default function Edit() {
                 <div
                     className="relative grid px-4 py-8 m-0 overflow-hidden text-center text-white bg-gray-900 place-items-center rounded-xl bg-clip-border shadow-gray-900/20">
                     <div className="h-20 p-6 mb-4 text-white">
-                        {/* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
-                            className="w-10 h-10 text-white"> */}
-                            {/* <path d="M4.5 3.75a3 3 0 00-3 3v.75h21v-.75a3 3 0 00-3-3h-15z"></path> */}
-                            {/* <path fillRule="evenodd"
-                                d="M22.5 9.75h-21v7.5a3 3 0 003 3h15a3 3 0 003-3v-7.5zm-18 3.75a.75.75 0 01.75-.75h6a.75.75 0 010 1.5h-6a.75.75 0 01-.75-.75zm.75 2.25a.75.75 0 000 1.5h3a.75.75 0 000-1.5h-3z"
-                                clipRule="evenodd"></path> */}
-                        {/* </svg> */}
+
                     </div>
                     <h5 className="block font-sans text-xl antialiased font-semibold leading-snug  text-white">
-                        Edit your post about your favorite ski resort!
+                        Edit your ski resort!
                     </h5>
                 </div>
 
@@ -157,15 +151,15 @@ export default function Edit() {
                                 className="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all before:content-none after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all after:content-none peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:!border-gray-900 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:!border-gray-900 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500"></label>
                         </div>
                         <p className="block mb-2 font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900">
-                            What is the average price per night
+                            What is the price for daily ski pass
                         </p>
                         <div className="relative h-10 w-full min-w-[200px]">
 
                             <input
                                 className="peer h-full w-full rounded-[7px] border border-blue-gray-200 border-t-transparent !border-t-blue-gray-200 bg-transparent px-3 py-2.5 !pr-9 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:!border-t-gray-900 focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
                                 type="number"
-                                name="bestHotelPrice"
-                                value={values.bestHotelPrice}
+                                name="skiPassPrice"
+                                value={values.skiPassPrice}
                                 onChange={changeHandler}
                             />
                             <label

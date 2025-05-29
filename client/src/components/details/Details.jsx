@@ -52,8 +52,8 @@ export default function TripDetails() {
                                     <dd className="mt-2 text-sm text-gray-500">Altitude</dd>
                                 </div>
                                 <div key={'2'} className="border-t border-gray-200 pt-4">
-                                    <dt className="font-medium text-gray-900">{`${trip.bestHotelPrice} € per night.`}</dt>
-                                    <dd className="mt-2 text-sm text-gray-500">Best Hotel Price</dd>
+                                    <dt className="font-medium text-gray-900">{`${trip.skiPassPrice} $`}</dt>
+                                    <dd className="mt-2 text-sm text-gray-500">Lift tickets per day</dd>
                                 </div>
                                 <div key={'3'} className="border-t border-gray-200 pt-4">
                                     <dt className="font-medium text-gray-900">{trip.numberOfHotels}</dt>

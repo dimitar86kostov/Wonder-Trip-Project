@@ -65,7 +65,7 @@ export function useGetOneTrips(tripId) {
         kmOfSlopes: '',
         numberOfLifts: '',
         numberOfHotels: '',
-        bestHotelPrice: '',
+        skiPassPrice: '',
         highestPeak: '',
         skiMap: '',
         description: ''
