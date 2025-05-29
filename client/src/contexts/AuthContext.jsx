@@ -21,10 +21,10 @@ export function AuthContextProvider(props) {
     };
 
     const logout = () => {
-        setAuthState(null);
-        // localStorage.setItem('auth', null);
-        localStorage.clear();
-    }
+        localStorage.removeItem('auth');     
+        setAuthState({});                    // нулира състоянието
+    };
+
 
     const contextData = {
         userId: authState?._id,

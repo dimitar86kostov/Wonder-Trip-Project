@@ -1,12 +1,13 @@
 import { useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
-import { useLogout } from '../../hooks/useAuth';
+// import { useLogout } from '../../hooks/useAuth';
+import { useAuthContext } from '../../contexts/AuthContext';
 
 export default function Logout() {
-    const logout = useLogout();
+    const { logout } = useAuthContext();
 
     useEffect(() => {
-        logout(); // извикваме само веднъж при mount
+        logout();
     }, []);
 
     return <Navigate to="/login" replace />;
