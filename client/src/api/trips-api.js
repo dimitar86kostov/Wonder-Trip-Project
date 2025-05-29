@@ -38,17 +38,16 @@ const update = (tripId, tripData) => request.put(`${BASE_URL}/${tripId}`, tripDa
 const remove = (tripId) => request.del(`${BASE_URL}/${tripId}`);
 
 const searching = async (string) => {
+  const searchParams = new URLSearchParams({
+    where: `resort="${string}"`,
+  });
 
-    const searchParams = new URLSearchParams({
-        where: `where=resort=${string}`,
-    });
-
-    const params = searchParams.toString().replaceAll("+", "%20");
-
-    const result = await request.get(`${BASE_URL}?${params}`);
-
-    return Object.values(result);
+  const result = await request.get(`${BASE_URL}?${searchParams}`);
+  console.log(Object.values(result));
+  
+  return Object.values(result);
 };
+
 
 const tripsAPI = {
     getAll,
