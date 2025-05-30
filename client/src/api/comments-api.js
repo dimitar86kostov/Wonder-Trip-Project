@@ -25,6 +25,18 @@ const update = (commentId, commentData) => request.put(`${BASE_URL}/${commentId}
 
 const remove = (commentId) => request.del(`${BASE_URL}/${commentId}`);
 
+//Replies
+
+const createReply = (commentId, replyData) =>
+  request.post(`${BASE_URL}/${commentId}/replies`, replyData);
+
+const editReply = (commentId, replyId, text) =>
+  request.put(`${BASE_URL}/${commentId}/replies/${replyId}`, { text });
+
+const deleteReply = (commentId, replyId) =>
+  request.del(`${BASE_URL}/${commentId}/replies/${replyId}`);
+
+
 
 
 const commentsAPI = {
@@ -33,6 +45,9 @@ const commentsAPI = {
     update,
     getCommentById,
     remove,
+    createReply,
+    editReply,
+    deleteReply
 }
 
 export default commentsAPI
