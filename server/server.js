@@ -9,6 +9,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+const authRoutes = require('./routes/authRoutes');
+app.use('/users', authRoutes);
+
+
 // Basic test route
 app.get('/', (req, res) => {
   res.json({ message: 'WonderTrip API is live 🎿' });
