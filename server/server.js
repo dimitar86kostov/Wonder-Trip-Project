@@ -12,6 +12,12 @@ app.use(express.json());
 const authRoutes = require('./routes/authRoutes');
 app.use('/users', authRoutes);
 
+const tripRoutes = require('./routes/tripRoutes');
+app.use('/data/resorts', tripRoutes);
+
+
+
+
 
 // Basic test route
 app.get('/', (req, res) => {
