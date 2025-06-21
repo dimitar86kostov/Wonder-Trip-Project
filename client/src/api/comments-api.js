@@ -1,53 +1,43 @@
-import * as request from './requester'
-const BASE_URL = `http://localhost:3030/data/comments`;
+import * as request from './requester';
+
+const BASE_URL = 'http://localhost:3030/data/comments';
 
 const getAll = (tripId) => {
-
-    const params = new URLSearchParams({
-        where: `tripId="${tripId}"`,
-        load: "author=_ownerId:users",
-    });
-
-    return request.get(`${BASE_URL}?${params.toString()}`);
+    return request.get(`/api/comments/${tripId}`);
 };
 
-const getCommentById = async (commentId) => {
-    const response = await fetch(`http://localhost:3030/data/comments/${commentId}`);
-    if (!response.ok) {
-        throw new Error('Failed to fetch comment');
-    }
-    return response.json();
+const getById = (tripId) => {
+    return request.getById(`/api/comments/${tripId}`);
 }
 
-const create = (tripId, text) => request.post(BASE_URL, { tripId, text });
+const create = (tripId, text, author) => {
+    return request.post(BASE_URL, { tripId, text, author });
+};
 
-const update = (commentId, commentData) => request.put(`${BASE_URL}/${commentId}`, commentData);
-
-const remove = (commentId) => request.del(`${BASE_URL}/${commentId}`);
-
-//Replies
-
-const createReply = (commentId, replyData) =>
-  request.post(`${BASE_URL}/${commentId}/replies`, replyData);
-
-const editReply = (commentId, replyId, text) =>
-  request.put(`${BASE_URL}/${commentId}/replies/${replyId}`, { text });
-
-const deleteReply = (commentId, replyId) =>
-  request.del(`${BASE_URL}/${commentId}/replies/${replyId}`);
+const update = (commentId, commentData) => {
+    return request.put(`${BASE_URL}/${commentId}`, commentData);
+};
 
 
+const createReply = (commentId, replyData) => {
+    return request.post(`${BASE_URL}/${commentId}/replies`, replyData);
+};
 
+const editReply = (commentId, replyId, text) => {
+    return request.put(`${BASE_URL}/${commentId}/replies/${replyId}`, { text });
+};
 
-const commentsAPI = {
-    create,
+const deleteReply = (commentId, replyId) => {
+    return request.del(`${BASE_URL}/${commentId}/replies/${replyId}`);
+};
+
+export default {
     getAll,
+    create,
     update,
-    getCommentById,
-    remove,
+    getById,
     createReply,
     editReply,
-    deleteReply
-}
+    deleteReply,
+};
 
-export default commentsAPI
