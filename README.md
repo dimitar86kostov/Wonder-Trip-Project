@@ -22,3 +22,17 @@ Built as a modern Single Page Application (SPA) with **React** and client-side r
   -  React
   -  Vite
   -  TailwindCS 
+
+## 📸 Screenshots
+
+### 🏔️ Home Page  
+![Home Page](./screenshots/home-page.JPG)
+
+### 🗺️ Resort Detail View  
+![Resort Detail](./screenshots/details.JPG)
+
+### ➕ Add New Resort Form  
+![Add Resort](./screenshots/create.JPG)
+
+### 💬 Comments and Replies  
+![Comments Section](./screenshots/resort-details-with-comments.JPG)
