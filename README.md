@@ -1,65 +1,38 @@
-# wonder-trip-2024
-In this web application users upload different ski resorts with required details. They can do all CRUD operations of their own posts and leave comments on every other posts. 
+# World Wide Ski Resorts Platform
 
-## 1. Initialize Project
-- [x] Initialize git repo
-- [x] Add softuni practice server
-- [x] Add base vite react project as client
-- [x] CleanUp client
-- [x] Add project resources
-- [x] Convert html to jsx
-- [x] Separate html into components
-## 2. React Router
-- [x] Install react-router-dom
-- [x] Setup react-router-dom
-- [x] Add routes in App.js
-- [x] Add links in the navigation
-## 3. Create Service Layer
-- [x] Service layer architecture disccusion
-- [x] Abstract requester
-- [x] Add trips api
-- [x] Preseed practice server
-## 4. Page Implementations
-- [x] Trips list
-- [x] Details
-  - [x] Details link
-  - [x] Details route
-  - [x] Api function - getOne
-- [x] Home - Latest Trips
-## 5. Comments
-- [x] Create service for nested resource `comments`
-- [x] Post comment to server
-- [x] Read comments from server
-- [x] Add comments in the component
-- [x] Clear form
-## 6. API Hooks
-- [x] Form Hook
-- [x] TripAPI Hooks
-- [x] Comment Hooks
-## 7. Authentication
-- [x] Auth API
-  - [x] Login
-  - [x] Register
-  - [x] Logout
-- [x] Auth API hook
-  - [x] Login
-  - [x] Register
-  - [x] Logout
-- [x] Auth state & context
-- [x] Token management
-- [x] Login
-- [x] Register
-  - [x] Add form validation
-- [x] Logout
-- [x] Authorized Requests
-## 8. UI Implementation 
-- [x] Dynamic navigation
-- [x] Create trip
-  - [x] API function
-  - [x] Hook
-- [x] Latest trips
+## Project Description
 
-## Notes
+Built as a modern Single Page Application (SPA) with **React** and client-side routing, this front-end web app allows users to seamlessly share their ski resort experiences—with fast navigation and no full-page reloads. Users can perform full **CRUD operations** on their own posts, leave comments on others' posts, and reply to any comment. The responsive UI is styled using **Tailwind CSS** and **CSS Modules**, with state and data flow managed via a service-layer abstraction.
 
-URL `http://localhost:3030/data/games?sortBy=_createdOn%20desc&pageSize=3`
+## Features
 
+* **Searching includes all ski resorts on the planet:** Full info about each ski resort, including the number of kilometers of ski slopes, altitude, number of lifts, highest peak, number of hotels in the resort, and more.
+
+* **Creating new ski resorts if missing from the platform:** Users can add new ski resorts with detailed information and upload a ski map.
+
+* **Commenting:** Users can share their own experiences by leaving comments on each ski resort, and can also reply to other users' comments.
+
+* **Pre-loaded data:** The platform comes with pre-loaded ski resort data to ensure a smooth user experience from the start.
+
+
+## Technology Stack
+
+- **Language:** HTML, JavaScript
+- **Libraries and Frameworks:**
+  -  React
+  -  Vite
+  -  TailwindCS 
+
+## 📸 Screenshots
+
+### 🏔️ Home Page  
+![Home Page](./screenshots/home-page.JPG)
+
+### 🗺️ Resort Detail View  
+![Resort Detail](./screenshots/details.JPG)
+
+### ➕ Add New Resort Form  
+![Add Resort](./screenshots/create.JPG)
+
+### 💬 Comments and Replies  
+![Comments Section](./screenshots/comm.JPG)
