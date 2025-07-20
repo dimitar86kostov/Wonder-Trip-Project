@@ -35,4 +35,4 @@ Built as a modern Single Page Application (SPA) with **React** and client-side r
 ![Add Resort](./screenshots/create.JPG)
 
 ### 💬 Comments and Replies  
-![Comments Section](./screenshots/resort-details-with-comments.JPG)
+![Comments Section](./screenshots/comm.JPG)
