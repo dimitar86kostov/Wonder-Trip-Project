@@ -17,7 +17,7 @@ Built as a modern Single Page Application (SPA) with **React** and client-side r
 
 ## Technology Stack
 * **Language:** HTML, JavaScript
-* **Libraries and Frameworks:** 
-- ○ React
-- ○ Vite
-- ○ TailwindCSS
+* **Libraries and Frameworks:**
+   ○ React
+   ○ Vite
+   ○ TailwindCSS
