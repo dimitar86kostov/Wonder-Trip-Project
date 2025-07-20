@@ -1,4 +1,4 @@
-# World Wide Ski Resorts Platform
+# Ski Resorts Platform
 
 ## Project Description
 
