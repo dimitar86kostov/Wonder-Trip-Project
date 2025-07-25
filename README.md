@@ -1,4 +1,4 @@
-# World Wide Ski Resorts Platform
+# Ski Resorts Platform
 
 ## Project Description
 
@@ -27,6 +27,9 @@ Built as a modern Single Page Application (SPA) with **React** and client-side r
 
 ### 🏔️ Home Page  
 ![Home Page](./screenshots/home-page.JPG)
+
+### 🎿 Catalog
+![Home Page](./screenshots/catalog.JPG)
 
 ### 🗺️ Resort Detail View  
 ![Resort Detail](./screenshots/details.JPG)
