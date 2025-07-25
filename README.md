@@ -8,9 +8,9 @@ Built as a modern Single Page Application (SPA) with **React** and client-side r
 
 * **Searching includes all ski resorts on the planet:** Full info about each ski resort, including the number of kilometers of ski slopes, altitude, number of lifts, highest peak, number of hotels in the resort, and more.
 
-* **Creating new ski resorts if missing from the platform:** Users can add new ski resorts with detailed information and upload a ski map.
+* **Creating new ski resorts if missing from on the platform:** Users can add new ski resorts with detailed information and upload a ski map.
 
-* **Commenting:** Users can share their own experiences by leaving comments on each ski resort, and can also reply to other users' comments.
+* **Commenting:** Users can share their own experiences by leaving comments on each ski resort, also reply to other users' comments.
 
 * **Pre-loaded data:** The platform comes with pre-loaded ski resort data to ensure a smooth user experience from the start.
 
@@ -21,7 +21,7 @@ Built as a modern Single Page Application (SPA) with **React** and client-side r
 - **Libraries and Frameworks:**
   -  React
   -  Vite
-  -  TailwindCS 
+  -  TailwindCSS 
 
 ## 📸 Screenshots
 
